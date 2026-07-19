@@ -9,6 +9,11 @@ export const PROJECTS: Project[] = [
     description:
       'Der Tour Planner ermöglicht registrierten Benutzern, Touren und Tour Logs zu erstellen, zu bearbeiten und zu löschen. Die Anwendung besteht aus einem Angular-Frontend und einem Spring-Boot-Backend.',
     imageUrl: 'images/tour-planner.jpg',
+    screenshots: [
+      'images/tour-planner-screenshot-1.jpg',
+      'images/tour-planner-screenshot-2.jpg',
+      'images/tour-planner-screenshot-3.jpg',
+    ],
     technologies: [
       'Angular',
       'TypeScript',
@@ -29,6 +34,11 @@ export const PROJECTS: Project[] = [
     description:
       'Benutzer können Inhalte in QR-Codes umwandeln, Kategorien auswählen, Codes als Favoriten speichern und gespeicherte QR-Codes filtern, sortieren oder löschen.',
     imageUrl: 'images/qr-generator.jpg',
+    screenshots: [
+      'images/qr-generator-screenshot-1.jpg',
+      'images/qr-generator-screenshot-2.jpg',
+      'images/qr-generator-screenshot-3.jpg',
+    ],
     technologies: ['Python', 'Flet', 'SQLite', 'QR Code'],
     githubUrl: 'https://github.com/DEIN-BENUTZERNAME/qr-code-generator',
     downloadUrl: 'downloads/qr-code-generator.zip',
@@ -42,6 +52,11 @@ export const PROJECTS: Project[] = [
     description:
       'Das Projekt unterstützt Lehrende bei der automatischen Erstellung von Kursplänen und Unterrichtseinheiten. Die Inhalte können bearbeitet und anschließend exportiert werden.',
     imageUrl: 'images/paipline.jpg',
+    screenshots: [
+      'images/paipline-screenshot-1.jpg',
+      'images/paipline-screenshot-2.jpg',
+      'images/paipline-screenshot-3.jpg',
+    ],
     technologies: ['Python', 'Artificial Intelligence', 'Moodle', 'JSON'],
     githubUrl: 'https://github.com/DEIN-BENUTZERNAME/paipline-generator',
     downloadUrl: 'downloads/paipline-generator.zip',

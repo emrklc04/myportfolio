@@ -1,4 +1,11 @@
-<article class="project-card">
+<article
+  class="project-card"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'Details zu ' + project.title + ' öffnen'"
+  (click)="openDetails()"
+  (keydown)="handleCardKeydown($event)"
+>
   <div class="image-container">
     <img
       [src]="project.imageUrl"
@@ -14,6 +21,7 @@
   <div class="project-content">
     <div>
       <h2>{{ project.title }}</h2>
+
       <p class="short-description">
         {{ project.shortDescription }}
       </p>
@@ -29,27 +37,120 @@
       }
     </div>
 
-    <div class="project-actions">
-      @if (project.githubUrl) {
-        <a
-          class="button secondary-button"
-          [href]="project.githubUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      }
-
-      @if (project.downloadUrl) {
-        <a
-          class="button primary-button"
-          [href]="project.downloadUrl"
-          download
-        >
-          ZIP herunterladen
-        </a>
-      }
-    </div>
+    <span class="details-hint">Projekt ansehen →</span>
   </div>
 </article>
+
+@if (isDetailsOpen) {
+  <div
+    class="modal-backdrop"
+    role="presentation"
+    (click)="closeDetails()"
+  >
+    <section
+      class="project-modal"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-labelledby]="'project-title-' + project.id"
+      (click)="stopPropagation($event)"
+    >
+      <button
+        class="close-button"
+        type="button"
+        aria-label="Projektansicht schließen"
+        (click)="closeDetails()"
+      >
+        ×
+      </button>
+
+      <div class="modal-hero">
+        <img
+          [src]="project.imageUrl"
+          [alt]="project.title"
+          class="modal-cover-image"
+        />
+
+        @if (project.featured) {
+          <span class="featured-badge modal-featured-badge">
+            Featured
+          </span>
+        }
+      </div>
+
+      <div class="modal-content">
+        <header class="modal-heading">
+          <p class="modal-eyebrow">Project Details</p>
+
+          <h2 [id]="'project-title-' + project.id">
+            {{ project.title }}
+          </h2>
+
+          <p class="modal-short-description">
+            {{ project.shortDescription }}
+          </p>
+        </header>
+
+        <p class="modal-description">
+          {{ project.description }}
+        </p>
+
+        <div class="technology-list modal-technology-list">
+          @for (technology of project.technologies; track technology) {
+            <span>{{ technology }}</span>
+          }
+        </div>
+
+        <section class="screenshots-section">
+          <div class="screenshots-heading">
+            <p class="modal-eyebrow">Application Preview</p>
+            <h3>Screenshots</h3>
+          </div>
+
+          <div class="screenshots-grid">
+            @for (
+              screenshot of project.screenshots;
+              track screenshot;
+              let index = $index
+              ) {
+              <a
+                class="screenshot-link"
+                [href]="screenshot"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  [src]="screenshot"
+                  [alt]="project.title + ' Screenshot ' + (index + 1)"
+                  class="screenshot-image"
+                />
+              </a>
+            }
+          </div>
+        </section>
+
+        <div class="project-actions">
+          @if (project.downloadUrl) {
+            <a
+              class="button primary-button"
+              [href]="project.downloadUrl"
+              download
+            >
+              ZIP herunterladen
+            </a>
+          }
+
+          @if (project.githubUrl) {
+            <a
+              class="button secondary-button"
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+}

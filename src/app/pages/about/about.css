@@ -124,7 +124,7 @@
   place-items: center;
   background:
     conic-gradient(
-      var(--accent-color) 0 var(--skill-level),
+      #c9e4ca 0 var(--skill-level),
       rgba(148, 163, 184, 0.16) var(--skill-level) 100%
     );
   box-shadow:
