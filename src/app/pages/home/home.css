@@ -22,7 +22,7 @@
 
 .eyebrow {
   margin: 0 0 18px;
-  color: var(--accent-color);
+  color: #c9e4ca;
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -77,7 +77,7 @@
 }
 
 .primary-button {
-  color: #07111f;
+  color: #ffffff;
   background: var(--accent-color);
 }
 
@@ -108,7 +108,7 @@
 .section-heading > p {
   max-width: 500px;
   margin: 0;
-  color: var(--text-secondary);
+  color: #c9e4ca;
   line-height: 1.7;
 }
 

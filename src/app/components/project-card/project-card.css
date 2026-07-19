@@ -67,7 +67,7 @@
 
 .description {
   margin: 0;
-  color: var(--text-secondary);
+  color: #c9e4ca;
   line-height: 1.7;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .primary-button {
-  color: #07111f;
+  color: #ffffff;
   background: var(--accent-color);
 }
 

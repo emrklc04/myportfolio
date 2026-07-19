@@ -57,12 +57,29 @@
 
   <section class="skills-section">
     <div class="container">
-      <p class="eyebrow">Kenntnisse</p>
-      <h2>Technologien und Fähigkeiten</h2>
+      <div class="skills-heading">
+        <p class="eyebrow">Kenntnisse</p>
+        <h2>Technologien und Fähigkeiten</h2>
 
-      <div class="skills-list">
-        @for (skill of skills; track skill) {
-          <span>{{ skill }}</span>
+        <p class="skills-introduction">
+          Eine Übersicht über die Technologien, mit denen ich bisher
+          gearbeitet habe.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        @for (skill of skills; track skill.name) {
+          <article class="skill-card">
+            <div
+              class="skill-circle"
+              [style.--skill-level]="skill.level + '%'"
+            >
+              <div class="skill-circle-inner">
+                <strong>{{ skill.level }}%</strong>
+                <span>{{ skill.name }}</span>
+              </div>
+            </div>
+          </article>
         }
       </div>
     </div>
