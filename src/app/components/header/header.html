@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="header-container">
+    <a routerLink="/" class="logo">
+      <span class="logo-symbol">&lt;/&gt;</span>
+      <span>Emre Kilic</span>
+    </a>
+
+    <nav class="navigation">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        My Projects
+      </a>
+
+      <a
+        routerLink="/about"
+        routerLinkActive="active"
+      >
+        Über mich
+      </a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,70 @@
+<main>
+  <section class="about-section">
+    <div class="container about-grid">
+      <div class="profile-image-wrapper">
+        <img
+          src="images/profile.jpg"
+          alt="Profilbild von Emre Kilic"
+          class="profile-image"
+        />
+      </div>
+
+      <div class="about-content">
+        <p class="eyebrow">Über mich</p>
+
+        <h1>
+          Informatikstudent mit Interesse an moderner Softwareentwicklung.
+        </h1>
+
+        <p>
+          Mein Name ist Emre Kilic und ich studiere Informatik an der
+          FH Technikum Wien. Besonders interessiere ich mich für moderne
+          Webanwendungen sowie für die Verbindung zwischen Frontend,
+          Backend und Datenbanken.
+        </p>
+
+        <p>
+          Während meines Studiums habe ich Projekte mit Angular, Java,
+          Spring Boot, Python und PostgreSQL umgesetzt. Dabei konnte ich
+          Erfahrungen in der Planung, Implementierung und Präsentation
+          von Softwareprojekten sammeln.
+        </p>
+
+        <div class="information-grid">
+          <div>
+            <span>Standort</span>
+            <strong>Wien, Österreich</strong>
+          </div>
+
+          <div>
+            <span>Studium</span>
+            <strong>Bachelor Informatik</strong>
+          </div>
+
+          <div>
+            <span>Sprachen</span>
+            <strong>Deutsch, Türkisch, Englisch</strong>
+          </div>
+
+          <div>
+            <span>Schwerpunkt</span>
+            <strong>Full-Stack Development</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-section">
+    <div class="container">
+      <p class="eyebrow">Kenntnisse</p>
+      <h2>Technologien und Fähigkeiten</h2>
+
+      <div class="skills-list">
+        @for (skill of skills; track skill) {
+          <span>{{ skill }}</span>
+        }
+      </div>
+    </div>
+  </section>
+</main>

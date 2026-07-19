@@ -1,0 +1,55 @@
+<article class="project-card">
+  <div class="image-container">
+    <img
+      [src]="project.imageUrl"
+      [alt]="project.title"
+      class="project-image"
+    />
+
+    @if (project.featured) {
+      <span class="featured-badge">Featured</span>
+    }
+  </div>
+
+  <div class="project-content">
+    <div>
+      <h2>{{ project.title }}</h2>
+      <p class="short-description">
+        {{ project.shortDescription }}
+      </p>
+    </div>
+
+    <p class="description">
+      {{ project.description }}
+    </p>
+
+    <div class="technology-list">
+      @for (technology of project.technologies; track technology) {
+        <span>{{ technology }}</span>
+      }
+    </div>
+
+    <div class="project-actions">
+      @if (project.githubUrl) {
+        <a
+          class="button secondary-button"
+          [href]="project.githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      }
+
+      @if (project.downloadUrl) {
+        <a
+          class="button primary-button"
+          [href]="project.downloadUrl"
+          download
+        >
+          ZIP herunterladen
+        </a>
+      }
+    </div>
+  </div>
+</article>

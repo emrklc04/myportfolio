@@ -1,0 +1,49 @@
+<main>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Informatikstudent & Softwareentwickler</p>
+
+      <h1>
+        Hallo, ich bin
+        <span>Emre Kilic.</span>
+      </h1>
+
+      <p class="hero-description">
+        Ich entwickle moderne Webanwendungen und Softwareprojekte mit
+        Angular, TypeScript, Java, Spring Boot und Python.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary-button" href="#projects">
+          Projekte ansehen
+        </a>
+
+        <a class="secondary-button" routerLink="/about">
+          Mehr über mich
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2>My Projects</h2>
+        </div>
+
+        <p>
+          Eine Auswahl meiner bisherigen IT-Projekte aus meinem Studium
+          und meiner persönlichen Entwicklung.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        @for (project of projects; track project.id) {
+          <app-project-card [project]="project"></app-project-card>
+        }
+      </div>
+    </div>
+  </section>
+</main>
