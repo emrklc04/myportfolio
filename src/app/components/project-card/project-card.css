@@ -61,13 +61,13 @@
 
 .short-description {
   margin: 0;
-  color: var(--accent-color);
+  color: #c9e4ca;
   font-weight: 600;
 }
 
 .description {
   margin: 0;
-  color: #c9e4ca;
+  color: #ffffff;
   line-height: 1.7;
 }
 

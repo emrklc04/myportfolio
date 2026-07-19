@@ -22,7 +22,7 @@
 
 .eyebrow {
   margin: 0 0 18px;
-  color: #c9e4ca;
+  color: #55828b;
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -39,13 +39,13 @@
 
 .hero h1 span {
   display: block;
-  color: var(--accent-color);
+  color: #55828b;
 }
 
 .hero-description {
   max-width: 670px;
   margin: 30px 0 0;
-  color: var(--text-secondary);
+  color: white;
   font-size: 1.2rem;
   line-height: 1.75;
 }
@@ -108,7 +108,7 @@
 .section-heading > p {
   max-width: 500px;
   margin: 0;
-  color: #c9e4ca;
+  color: white;
   line-height: 1.7;
 }
 
