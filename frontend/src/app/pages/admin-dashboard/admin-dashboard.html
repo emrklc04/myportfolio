@@ -1,0 +1,519 @@
+<main class="admin-dashboard">
+  <aside class="admin-sidebar">
+    <div class="sidebar-heading">
+      <a routerLink="/" class="admin-logo">
+        <span>&lt;/&gt;</span>
+
+        <div>
+          <strong>Portfolio</strong>
+          <small>Adminbereich</small>
+        </div>
+      </a>
+    </div>
+
+    <nav class="admin-navigation">
+      <button
+        type="button"
+        [class.active]="activeSection === 'overview'"
+        (click)="showSection('overview')"
+      >
+        <span class="navigation-icon" aria-hidden="true">
+          ◫
+        </span>
+
+        Übersicht
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'skill'"
+        (click)="showSection('skill')"
+      >
+        <span class="navigation-icon" aria-hidden="true">
+          ◉
+        </span>
+
+        Neuer Skill
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection === 'project'"
+        (click)="showSection('project')"
+      >
+        <span class="navigation-icon" aria-hidden="true">
+          ◆
+        </span>
+
+        Neues Projekt
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a routerLink="/" class="website-link">
+        <span aria-hidden="true">←</span>
+        Website öffnen
+      </a>
+
+      <button
+        type="button"
+        class="logout-button"
+        (click)="logout()"
+      >
+        Abmelden
+      </button>
+    </div>
+  </aside>
+
+  <section class="admin-content">
+    <header class="admin-topbar">
+      <div>
+        <p>Verwaltungsbereich</p>
+        <h1>Admin Dashboard</h1>
+      </div>
+
+      <div class="admin-user">
+        <span class="admin-avatar">EK</span>
+
+        <div>
+          <strong>Emre Kilic</strong>
+          <small>Administrator</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="backend-notice">
+      <span aria-hidden="true">⚡</span>
+
+      <div>
+        <strong>Frontend-Vorschau</strong>
+
+        <p>
+          Die Formulare sind bereits vorbereitet. Speichern,
+          Bearbeiten und Löschen werden später über das
+          Spring-Boot-Backend umgesetzt.
+        </p>
+      </div>
+    </div>
+
+    @if (activeSection === 'overview') {
+      <section class="dashboard-section">
+        <div class="section-heading">
+          <p>Übersicht</p>
+          <h2>Was möchtest du verwalten?</h2>
+        </div>
+
+        <div class="overview-grid">
+          <button
+            type="button"
+            class="overview-card"
+            (click)="showSection('skill')"
+          >
+            <span class="overview-icon" aria-hidden="true">
+              ◉
+            </span>
+
+            <div>
+              <span class="card-label">
+                Skills
+              </span>
+
+              <h3>Neuen Skill-Circle eintragen</h3>
+
+              <p>
+                Name, Prozentwert, Beschreibung und passende
+                Projekttechnologien vorbereiten.
+              </p>
+            </div>
+
+            <span class="overview-arrow" aria-hidden="true">
+              →
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="overview-card"
+            (click)="showSection('project')"
+          >
+            <span class="overview-icon" aria-hidden="true">
+              ◆
+            </span>
+
+            <div>
+              <span class="card-label">
+                Projekte
+              </span>
+
+              <h3>Neues Projekt eintragen</h3>
+
+              <p>
+                Projektinformationen, Technologien, Links und
+                Bildpfade vorbereiten.
+              </p>
+            </div>
+
+            <span class="overview-arrow" aria-hidden="true">
+              →
+            </span>
+          </button>
+        </div>
+
+        <div class="future-functions">
+          <h3>Für die Backend-Anbindung vorbereitet</h3>
+
+          <div class="function-grid">
+            <div>
+              <span aria-hidden="true">✓</span>
+              Login über Benutzername und Passwort
+            </div>
+
+            <div>
+              <span aria-hidden="true">✓</span>
+              Neue Skills erstellen
+            </div>
+
+            <div>
+              <span aria-hidden="true">✓</span>
+              Neue Projekte erstellen
+            </div>
+
+            <div>
+              <span aria-hidden="true">✓</span>
+              Bilder und ZIP-Dateien hochladen
+            </div>
+
+            <div>
+              <span aria-hidden="true">✓</span>
+              Einträge bearbeiten und löschen
+            </div>
+
+            <div>
+              <span aria-hidden="true">✓</span>
+              Daten aus PostgreSQL laden
+            </div>
+          </div>
+        </div>
+      </section>
+    }
+
+    @if (activeSection === 'skill') {
+      <section class="dashboard-section">
+        <div class="section-heading">
+          <p>Skill-Verwaltung</p>
+          <h2>Neuen Skill-Circle vorbereiten</h2>
+
+          <span>
+            Die eingegebenen Daten werden derzeit noch nicht
+            gespeichert.
+          </span>
+        </div>
+
+        <form
+          class="admin-form"
+          (ngSubmit)="prepareSkill()"
+        >
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Skill-Name</span>
+
+              <input
+                type="text"
+                name="skillName"
+                [(ngModel)]="skillForm.name"
+                placeholder="z. B. Angular"
+              />
+            </label>
+
+            <label class="form-field">
+              <span>Kenntnisstand in Prozent</span>
+
+              <input
+                type="number"
+                name="skillLevel"
+                [(ngModel)]="skillForm.level"
+                placeholder="z. B. 80"
+                min="0"
+                max="100"
+              />
+            </label>
+
+            <label class="form-field full-width">
+              <span>
+                Beschreibungspunkte
+              </span>
+
+              <textarea
+                name="skillDescription"
+                [(ngModel)]="skillForm.description"
+                rows="5"
+                placeholder="Mehrere Punkte durch Kommas trennen"
+              ></textarea>
+
+              <small>
+                Beispiel: REST-APIs entwickelt, Komponenten
+                erstellt, Formulare umgesetzt
+              </small>
+            </label>
+
+            <label class="form-field full-width">
+              <span>
+                Passende Projekttechnologien
+              </span>
+
+              <input
+                type="text"
+                name="skillTechnologies"
+                [(ngModel)]="skillForm.technologies"
+                placeholder="Angular, TypeScript"
+              />
+
+              <small>
+                Mehrere Technologien durch Kommas trennen.
+              </small>
+            </label>
+          </div>
+
+          <div class="form-preview">
+            <div
+              class="preview-circle"
+              [style.--preview-level]="
+                (skillForm.level ?? 0) + '%'
+              "
+            >
+              <div>
+                <strong>
+                  {{ skillForm.level ?? 0 }}%
+                </strong>
+
+                <span>
+                  {{ skillForm.name || 'Skill' }}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <p>Live-Vorschau</p>
+
+              <h3>
+                {{
+                  skillForm.name ||
+                  'Name des Skills'
+                }}
+              </h3>
+
+              <span>
+                So könnte der Skill-Circle später auf der
+                About-Seite dargestellt werden.
+              </span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="secondary-button"
+              (click)="resetSkillForm()"
+            >
+              Formular leeren
+            </button>
+
+            <button type="submit" class="primary-button">
+              <span>
+                Skill später speichern
+              </span>
+
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    }
+
+    @if (activeSection === 'project') {
+      <section class="dashboard-section">
+        <div class="section-heading">
+          <p>Projekt-Verwaltung</p>
+          <h2>Neues Projekt vorbereiten</h2>
+
+          <span>
+            Der Speichern-Button führt aktuell noch keinen
+            API-Aufruf aus.
+          </span>
+        </div>
+
+        <form
+          class="admin-form"
+          (ngSubmit)="prepareProject()"
+        >
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Projekttitel</span>
+
+              <input
+                type="text"
+                name="projectTitle"
+                [(ngModel)]="projectForm.title"
+                placeholder="z. B. Tour Planner"
+              />
+            </label>
+
+            <label class="form-field">
+              <span>Hauptbild</span>
+
+              <input
+                type="text"
+                name="projectImage"
+                [(ngModel)]="projectForm.imageUrl"
+                placeholder="images/project.jpg"
+              />
+            </label>
+
+            <label class="form-field full-width">
+              <span>Kurzbeschreibung</span>
+
+              <input
+                type="text"
+                name="projectShortDescription"
+                [(ngModel)]="
+                  projectForm.shortDescription
+                "
+                placeholder="Kurze Beschreibung für die Projektkarte"
+              />
+            </label>
+
+            <label class="form-field full-width">
+              <span>Ausführliche Beschreibung</span>
+
+              <textarea
+                name="projectDescription"
+                [(ngModel)]="projectForm.description"
+                rows="6"
+                placeholder="Beschreibe die Funktionen und Ziele des Projekts"
+              ></textarea>
+            </label>
+
+            <label class="form-field full-width">
+              <span>Technologien</span>
+
+              <input
+                type="text"
+                name="projectTechnologies"
+                [(ngModel)]="projectForm.technologies"
+                placeholder="Angular, TypeScript, Java, Spring Boot"
+              />
+
+              <small>
+                Mehrere Technologien durch Kommas trennen.
+              </small>
+            </label>
+
+            <label class="form-field full-width">
+              <span>Screenshot-Pfade</span>
+
+              <textarea
+                name="projectScreenshots"
+                [(ngModel)]="projectForm.screenshots"
+                rows="4"
+                placeholder="images/screenshot-1.jpg, images/screenshot-2.jpg"
+              ></textarea>
+
+              <small>
+                Mehrere Bildpfade durch Kommas trennen.
+              </small>
+            </label>
+
+            <label class="form-field">
+              <span>GitHub-Link</span>
+
+              <input
+                type="url"
+                name="projectGithub"
+                [(ngModel)]="projectForm.githubUrl"
+                placeholder="https://github.com/..."
+              />
+            </label>
+
+            <label class="form-field">
+              <span>Download-Link</span>
+
+              <input
+                type="text"
+                name="projectDownload"
+                [(ngModel)]="projectForm.downloadUrl"
+                placeholder="downloads/project.zip"
+              />
+            </label>
+
+            <label class="checkbox-field full-width">
+              <input
+                type="checkbox"
+                name="projectFeatured"
+                [(ngModel)]="projectForm.featured"
+              />
+
+              <span class="custom-checkbox"></span>
+
+              <span>
+                Projekt als „Featured“ markieren
+              </span>
+            </label>
+          </div>
+
+          <div class="project-preview">
+            <div class="project-preview-image">
+              @if (projectForm.imageUrl) {
+                <img
+                  [src]="projectForm.imageUrl"
+                  alt="Projektvorschau"
+                />
+              } @else {
+                <span aria-hidden="true">◆</span>
+              }
+            </div>
+
+            <div class="project-preview-content">
+              @if (projectForm.featured) {
+                <span class="featured-badge">
+                  Featured
+                </span>
+              }
+
+              <h3>
+                {{
+                  projectForm.title ||
+                  'Projekttitel'
+                }}
+              </h3>
+
+              <p>
+                {{
+                  projectForm.shortDescription ||
+                  'Hier wird die Kurzbeschreibung des Projekts angezeigt.'
+                }}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="secondary-button"
+              (click)="resetProjectForm()"
+            >
+              Formular leeren
+            </button>
+
+            <button type="submit" class="primary-button">
+              <span>
+                Projekt später speichern
+              </span>
+
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    }
+  </section>
+</main>

@@ -10,7 +10,6 @@ import { PROJECTS } from '../../data/projects';
 
 interface Skill {
   name: string;
-  level: number;
   description: string[];
   projectTechnologies: string[];
 }
@@ -138,7 +137,6 @@ export class About {
   protected readonly skills: Skill[] = [
     {
       name: 'Angular',
-      level: 80,
       description: [
         'Entwicklung komponentenbasierter Single-Page Applications.',
         'Verwendung von Standalone Components und Angular Routing.',
@@ -150,7 +148,6 @@ export class About {
     },
     {
       name: 'TypeScript',
-      level: 75,
       description: [
         'Typisierte Entwicklung von Angular-Anwendungen.',
         'Erstellung eigener Interfaces und Datenmodelle.',
@@ -162,7 +159,6 @@ export class About {
     },
     {
       name: 'JavaScript',
-      level: 70,
       description: [
         'Arbeit mit Funktionen, Arrays, Objekten und Events.',
         'Dynamische Verarbeitung und Darstellung von Daten.',
@@ -173,7 +169,6 @@ export class About {
     },
     {
       name: 'Java',
-      level: 82,
       description: [
         'Objektorientierte Entwicklung mit Klassen und Interfaces.',
         'Entwicklung von Backend-Anwendungen mit Spring Boot.',
@@ -185,7 +180,6 @@ export class About {
     },
     {
       name: 'Spring Boot',
-      level: 75,
       description: [
         'Entwicklung von REST-Schnittstellen.',
         'Umsetzung einer mehrschichtigen Backend-Architektur.',
@@ -197,7 +191,6 @@ export class About {
     },
     {
       name: 'Python',
-      level: 65,
       description: [
         'Entwicklung von Anwendungen mit Python und Flet.',
         'Verarbeitung und Speicherung von Anwendungsdaten.',
@@ -209,7 +202,6 @@ export class About {
     },
     {
       name: 'PostgreSQL',
-      level: 70,
       description: [
         'Entwurf relationaler Datenbankstrukturen.',
         'Speicherung von Benutzern, Projekten, Touren und Logs.',
@@ -221,7 +213,6 @@ export class About {
     },
     {
       name: 'Git',
-      level: 72,
       description: [
         'Versionsverwaltung von Einzel- und Gruppenprojekten.',
         'Arbeit mit Branches, Commits und Merge-Vorgängen.',
@@ -233,7 +224,6 @@ export class About {
     },
     {
       name: 'HTML',
-      level: 88,
       description: [
         'Erstellung semantisch strukturierter Webseiten.',
         'Aufbau responsiver Seiten und Komponenten.',
@@ -245,7 +235,6 @@ export class About {
     },
     {
       name: 'CSS',
-      level: 80,
       description: [
         'Umsetzung responsiver Layouts mit Grid und Flexbox.',
         'Erstellung von Animationen und Übergängen.',
@@ -288,6 +277,7 @@ export class About {
   protected isEntryOpen(entryId: string): boolean {
     return this.openEntryId === entryId;
   }
+
   protected async openSkillDetails(
     skill: Skill,
     skillCircle: HTMLElement,

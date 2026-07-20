@@ -240,22 +240,20 @@
               type="button"
               class="skill-button"
               [attr.aria-label]="
-              'Details und Projekte zu ' + skill.name + ' öffnen'
-            "
+          'Details und Projekte zu ' + skill.name + ' öffnen'
+        "
               [attr.aria-busy]="rotatingSkillName === skill.name"
               (click)="openSkillDetails(skill, skillCircle)"
             >
-            <span
-              #skillCircle
-              class="skill-circle"
-              [style.--skill-level]="skill.level + '%'"
-            >
-              <span class="skill-circle-inner">
-                <strong>{{ skill.level }}%</strong>
-                <span>{{ skill.name }}</span>
-                <small>Details ansehen</small>
-              </span>
-            </span>
+        <span
+          #skillCircle
+          class="skill-circle"
+        >
+          <span class="skill-circle-inner">
+            <strong>{{ skill.name }}</strong>
+            <small>Details ansehen</small>
+          </span>
+        </span>
             </button>
           </article>
         }
@@ -286,12 +284,9 @@
         </button>
 
         <header class="skill-modal-header">
-          <div
-            class="modal-skill-circle"
-            [style.--skill-level]="selectedSkill.level + '%'"
-          >
+          <div class="modal-skill-circle">
             <div class="modal-skill-circle-inner">
-              <strong>{{ selectedSkill.level }}%</strong>
+              <strong>{{ selectedSkill.name }}</strong>
             </div>
           </div>
 
