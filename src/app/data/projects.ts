@@ -20,7 +20,6 @@ export const PROJECTS: Project[] = [
       'Java',
       'Spring Boot',
       'PostgreSQL',
-      'JWT',
     ],
     githubUrl: 'https://github.com/DEIN-BENUTZERNAME/tour-planner',
     downloadUrl: 'downloads/tour-planner.zip',

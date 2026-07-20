@@ -13,7 +13,8 @@
         <p class="eyebrow">Über mich</p>
 
         <h1>
-          Informatikstudent mit Interesse an moderner Softwareentwicklung.
+          Informatikstudent mit Interesse an moderner
+          Softwareentwicklung.
         </h1>
 
         <p>
@@ -63,14 +64,17 @@
         <h2>Berufserfahrung und Bildungsweg</h2>
 
         <p>
-          Eine Übersicht meiner bisherigen beruflichen Stationen und meiner
-          Ausbildung. Durch Anklicken einer Station werden weitere Details
-          eingeblendet.
+          Eine Übersicht meiner bisherigen beruflichen Stationen und
+          meiner Ausbildung. Durch Anklicken einer Station werden
+          weitere Details eingeblendet.
         </p>
       </div>
 
       <div class="journey-grid">
-        <section class="journey-column" aria-labelledby="work-heading">
+        <section
+          class="journey-column"
+          aria-labelledby="work-heading"
+        >
           <div class="column-heading">
             <span class="column-number">01</span>
 
@@ -106,11 +110,15 @@
                     <strong>{{ entry.title }}</strong>
 
                     <span>
-                      {{ entry.organization }} · {{ entry.location }}
+                      {{ entry.organization }} ·
+                      {{ entry.location }}
                     </span>
                   </span>
 
-                  <span class="timeline-toggle" aria-hidden="true">
+                  <span
+                    class="timeline-toggle"
+                    aria-hidden="true"
+                  >
                     {{ isEntryOpen(entry.id) ? '−' : '+' }}
                   </span>
                 </button>
@@ -122,7 +130,10 @@
                 >
                   <div class="timeline-details-inner">
                     <ul>
-                      @for (task of entry.description; track task) {
+                      @for (
+                        task of entry.description;
+                        track task
+                        ) {
                         <li>{{ task }}</li>
                       }
                     </ul>
@@ -172,11 +183,15 @@
                     <strong>{{ entry.title }}</strong>
 
                     <span>
-                      {{ entry.organization }} · {{ entry.location }}
+                      {{ entry.organization }} ·
+                      {{ entry.location }}
                     </span>
                   </span>
 
-                  <span class="timeline-toggle" aria-hidden="true">
+                  <span
+                    class="timeline-toggle"
+                    aria-hidden="true"
+                  >
                     {{ isEntryOpen(entry.id) ? '−' : '+' }}
                   </span>
                 </button>
@@ -213,26 +228,147 @@
         <h2>Technologien und Fähigkeiten</h2>
 
         <p class="skills-introduction">
-          Eine Übersicht über die Technologien, mit denen ich bisher
-          gearbeitet habe.
+          Klicke auf eine Technologie, um meine bisherigen Erfahrungen
+          und passende Projekte zu sehen.
         </p>
       </div>
 
       <div class="skills-grid">
         @for (skill of skills; track skill.name) {
           <article class="skill-card">
-            <div
+            <button
+              type="button"
+              class="skill-button"
+              [attr.aria-label]="
+              'Details und Projekte zu ' + skill.name + ' öffnen'
+            "
+              [attr.aria-busy]="rotatingSkillName === skill.name"
+              (click)="openSkillDetails(skill, skillCircle)"
+            >
+            <span
+              #skillCircle
               class="skill-circle"
               [style.--skill-level]="skill.level + '%'"
             >
-              <div class="skill-circle-inner">
+              <span class="skill-circle-inner">
                 <strong>{{ skill.level }}%</strong>
                 <span>{{ skill.name }}</span>
-              </div>
-            </div>
+                <small>Details ansehen</small>
+              </span>
+            </span>
+            </button>
           </article>
         }
       </div>
     </div>
   </section>
-</main>
+
+  @if (selectedSkill) {
+    <div
+      class="skill-modal-backdrop"
+      role="presentation"
+      (click)="closeSkillDetails()"
+    >
+      <section
+        class="skill-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="skill-modal-title"
+        (click)="stopPropagation($event)"
+      >
+        <button
+          type="button"
+          class="skill-modal-close"
+          aria-label="Skill-Fenster schließen"
+          (click)="closeSkillDetails()"
+        >
+          ×
+        </button>
+
+        <header class="skill-modal-header">
+          <div
+            class="modal-skill-circle"
+            [style.--skill-level]="selectedSkill.level + '%'"
+          >
+            <div class="modal-skill-circle-inner">
+              <strong>{{ selectedSkill.level }}%</strong>
+            </div>
+          </div>
+
+          <div>
+            <p class="skill-modal-eyebrow">
+              Technologie
+            </p>
+
+            <h2 id="skill-modal-title">
+              {{ selectedSkill.name }}
+            </h2>
+
+            <p>
+              Meine bisherigen Erfahrungen mit
+              {{ selectedSkill.name }}.
+            </p>
+          </div>
+        </header>
+
+        <div class="skill-experience-section">
+          <h3>Was ich damit gemacht habe</h3>
+
+          <ul class="skill-description-list">
+            @for (
+              description of selectedSkill.description;
+              track description
+              ) {
+              <li>{{ description }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="skill-projects-section">
+          <div class="skill-projects-heading">
+            <div>
+              <p class="skill-modal-eyebrow">
+                Passende Arbeiten
+              </p>
+
+              <h3>
+                Projekte mit {{ selectedSkill.name }}
+              </h3>
+            </div>
+
+            <span class="project-count">
+            {{ filteredSkillProjects.length }}
+
+              {{
+                filteredSkillProjects.length === 1
+                  ? 'Projekt'
+                  : 'Projekte'
+              }}
+          </span>
+          </div>
+
+          @if (filteredSkillProjects.length > 0) {
+            <div class="skill-projects-grid">
+              @for (
+                project of filteredSkillProjects;
+                track project.id
+                ) {
+                <app-project-card
+                  [project]="project"
+                ></app-project-card>
+              }
+            </div>
+          } @else {
+            <div class="no-skill-projects">
+              <h4>Noch kein passendes Projekt eingetragen</h4>
+
+              <p>
+                Für diese Technologie ist aktuell noch kein Projekt
+                eingetragen.
+              </p>
+            </div>
+          }
+        </div>
+      </section>
+    </div>
+  }
