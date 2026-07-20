@@ -55,10 +55,161 @@
     </div>
   </section>
 
+  <section class="journey-section">
+    <div class="container">
+      <div class="journey-heading">
+        <p class="eyebrow">Mein Werdegang</p>
+
+        <h2>Berufserfahrung und Bildungsweg</h2>
+
+        <p>
+          Eine Übersicht meiner bisherigen beruflichen Stationen und meiner
+          Ausbildung. Durch Anklicken einer Station werden weitere Details
+          eingeblendet.
+        </p>
+      </div>
+
+      <div class="journey-grid">
+        <section class="journey-column" aria-labelledby="work-heading">
+          <div class="column-heading">
+            <span class="column-number">01</span>
+
+            <div>
+              <p>Erfahrung</p>
+              <h3 id="work-heading">Berufserfahrung</h3>
+            </div>
+          </div>
+
+          <div class="timeline-list">
+            @for (entry of workExperience; track entry.id) {
+              <article
+                class="timeline-item"
+                [class.open]="isEntryOpen(entry.id)"
+              >
+                <button
+                  type="button"
+                  class="timeline-trigger"
+                  [attr.aria-expanded]="isEntryOpen(entry.id)"
+                  [attr.aria-controls]="entry.id + '-content'"
+                  (click)="toggleEntry(entry.id)"
+                >
+                  <span
+                    class="timeline-marker"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span class="timeline-summary">
+                    <span class="timeline-period">
+                      {{ entry.period }}
+                    </span>
+
+                    <strong>{{ entry.title }}</strong>
+
+                    <span>
+                      {{ entry.organization }} · {{ entry.location }}
+                    </span>
+                  </span>
+
+                  <span class="timeline-toggle" aria-hidden="true">
+                    {{ isEntryOpen(entry.id) ? '−' : '+' }}
+                  </span>
+                </button>
+
+                <div
+                  class="timeline-details"
+                  [id]="entry.id + '-content'"
+                  [class.visible]="isEntryOpen(entry.id)"
+                >
+                  <div class="timeline-details-inner">
+                    <ul>
+                      @for (task of entry.description; track task) {
+                        <li>{{ task }}</li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+
+        <section
+          class="journey-column"
+          aria-labelledby="education-heading"
+        >
+          <div class="column-heading">
+            <span class="column-number">02</span>
+
+            <div>
+              <p>Ausbildung</p>
+              <h3 id="education-heading">Bildungsweg</h3>
+            </div>
+          </div>
+
+          <div class="timeline-list">
+            @for (entry of education; track entry.id) {
+              <article
+                class="timeline-item"
+                [class.open]="isEntryOpen(entry.id)"
+              >
+                <button
+                  type="button"
+                  class="timeline-trigger"
+                  [attr.aria-expanded]="isEntryOpen(entry.id)"
+                  [attr.aria-controls]="entry.id + '-content'"
+                  (click)="toggleEntry(entry.id)"
+                >
+                  <span
+                    class="timeline-marker"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span class="timeline-summary">
+                    <span class="timeline-period">
+                      {{ entry.period }}
+                    </span>
+
+                    <strong>{{ entry.title }}</strong>
+
+                    <span>
+                      {{ entry.organization }} · {{ entry.location }}
+                    </span>
+                  </span>
+
+                  <span class="timeline-toggle" aria-hidden="true">
+                    {{ isEntryOpen(entry.id) ? '−' : '+' }}
+                  </span>
+                </button>
+
+                <div
+                  class="timeline-details"
+                  [id]="entry.id + '-content'"
+                  [class.visible]="isEntryOpen(entry.id)"
+                >
+                  <div class="timeline-details-inner">
+                    <ul>
+                      @for (
+                        detail of entry.description;
+                        track detail
+                        ) {
+                        <li>{{ detail }}</li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
   <section class="skills-section">
     <div class="container">
       <div class="skills-heading">
         <p class="eyebrow">Kenntnisse</p>
+
         <h2>Technologien und Fähigkeiten</h2>
 
         <p class="skills-introduction">

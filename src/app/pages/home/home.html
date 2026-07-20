@@ -39,11 +39,91 @@
         </p>
       </div>
 
-      <div class="projects-grid">
-        @for (project of projects; track project.id) {
-          <app-project-card [project]="project"></app-project-card>
-        }
+      <div class="project-controls">
+        <label class="search-field">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+
+          <input
+            type="search"
+            placeholder="Projekt nach Namen suchen ..."
+            aria-label="Projekt nach Namen suchen"
+            [value]="searchTerm"
+            (input)="updateSearchTerm($event)"
+          />
+        </label>
+
+        <div class="filter-area">
+          <p class="filter-label">Technologie filtern</p>
+
+          <div class="filter-buttons" aria-label="Technologie-Filter">
+            <button
+              type="button"
+              class="filter-button"
+              [class.active]="selectedTechnology === 'All'"
+              [attr.aria-pressed]="selectedTechnology === 'All'"
+              (click)="selectTechnology('All')"
+            >
+              All
+            </button>
+
+            @for (technology of technologies; track technology) {
+              <button
+                type="button"
+                class="filter-button"
+                [class.active]="selectedTechnology === technology"
+                [attr.aria-pressed]="selectedTechnology === technology"
+                (click)="selectTechnology(technology)"
+              >
+                {{ technology }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="results-row">
+          <p>
+            {{ filteredProjects.length }}
+            {{ filteredProjects.length === 1 ? 'Projekt' : 'Projekte' }}
+            gefunden
+          </p>
+
+          @if (searchTerm || selectedTechnology !== 'All') {
+            <button
+              type="button"
+              class="reset-button"
+              (click)="resetFilters()"
+            >
+              Filter zurücksetzen
+            </button>
+          }
+        </div>
       </div>
+
+      @if (filteredProjects.length > 0) {
+        <div class="projects-grid">
+          @for (project of filteredProjects; track project.id) {
+            <app-project-card [project]="project"></app-project-card>
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <span aria-hidden="true">⌕</span>
+
+          <h3>Keine Projekte gefunden</h3>
+
+          <p>
+            Ändere den Suchbegriff oder wähle eine andere Technologie aus.
+          </p>
+
+          <button
+            type="button"
+            class="primary-button"
+            (click)="resetFilters()"
+          >
+            Alle Projekte anzeigen
+          </button>
+        </div>
+      }
     </div>
   </section>
 </main>
