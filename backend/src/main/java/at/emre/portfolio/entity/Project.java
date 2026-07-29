@@ -80,11 +80,29 @@ public class Project {
         LocalDateTime now = LocalDateTime.now();
         createdAt = now;
         updatedAt = now;
+        if (this.slug == null || this.slug.isBlank()) {
+            this.slug = generateSlug(this.title);
+        }
     }
 
     @PreUpdate
     void onUpdate() {
         updatedAt = LocalDateTime.now();
+        if (this.slug == null || this.slug.isBlank()) {
+            this.slug = generateSlug(this.title);
+        }
+    }
+
+    private String generateSlug(String title) {
+        if (title == null) return "";
+        return title.toLowerCase()
+                .replaceAll("[ää]", "ae")
+                .replaceAll("[öö]", "oe")
+                .replaceAll("[üü]", "ue")
+                .replaceAll("[ß]", "ss")
+                .replaceAll("[^a-z0-9]", "-")
+                .replaceAll("-+", "-")
+                .replaceAll("^-|-$", "");
     }
 
     public Long getId() {
@@ -186,4 +204,6 @@ public class Project {
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+
+
 }

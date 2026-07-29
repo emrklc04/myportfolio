@@ -38,18 +38,10 @@ interface SkillForm {
 
 interface ProjectForm {
   title: string;
-
-  /*
-   * Diese Felder werden vom vorhandenen HTML verwendet.
-   */
   imageUrl: string;
   description: string;
   screenshots: string;
   downloadUrl: string;
-
-  /*
-   * Diese Felder werden für das Backend benötigt.
-   */
   shortDescription: string;
   fullDescription: string;
   technologies: string;
@@ -80,22 +72,19 @@ export class AdminDashboard implements OnInit {
   private readonly projectService =
     inject(ProjectService);
 
-  protected activeSection:
-    AdminSection = 'overview';
-
+  protected activeSection: AdminSection = 'overview';
   protected projects: Project[] = [];
 
-  protected skillForm:
-    SkillForm =
+  protected skillForm: SkillForm =
     this.createEmptySkillForm();
 
-  protected projectForm:
-    ProjectForm =
+  protected projectForm: ProjectForm =
     this.createEmptyProjectForm();
+
+  protected editingProjectId: number | null = null;
 
   protected loadingProjects = true;
   protected saving = false;
-
   protected message = '';
   protected errorMessage = '';
 
@@ -112,15 +101,11 @@ export class AdminDashboard implements OnInit {
     this.activeSection = section;
     this.message = '';
     this.errorMessage = '';
+    if (section !== 'project') {
+      this.cancelEdit();
+    }
   }
 
-  /**
-   * Wird vom bestehenden Skill-Formular im HTML aufgerufen.
-   *
-   * Die Skill-Verwaltung ist derzeit noch nicht mit einem
-   * Backend-Endpunkt verbunden. Diese Methode validiert daher
-   * zunächst nur das Formular.
-   */
   protected prepareSkill(): void {
     this.message = '';
     this.errorMessage = '';
@@ -155,15 +140,11 @@ export class AdminDashboard implements OnInit {
     this.errorMessage = '';
   }
 
-  /**
-   * Diese Methode wird von deinem vorhandenen HTML aufgerufen.
-   * Sie leitet das Formular an createProject() weiter.
-   */
   protected prepareProject(): void {
-    this.createProject();
+    this.saveProject();
   }
 
-  protected createProject(): void {
+  protected saveProject(): void {
     this.message = '';
     this.errorMessage = '';
 
@@ -175,39 +156,93 @@ export class AdminDashboard implements OnInit {
     }
 
     this.saving = true;
+    const request = this.toRequest();
 
-    this.projectService
-      .createProject(
-        this.toRequest(),
-      )
-      .pipe(
-        finalize(() => {
-          this.saving = false;
-        }),
-      )
-      .subscribe({
-        next: (project) => {
-          this.projects = [
-            ...this.projects,
-            project,
-          ];
+    if (this.editingProjectId) {
+      this.projectService
+        .updateProject(this.editingProjectId, request)
+        .pipe(
+          finalize(() => {
+            this.saving = false;
+          }),
+        )
+        .subscribe({
+          next: (updatedProject) => {
+            this.projects = this.projects.map((p) =>
+              p.id === updatedProject.id ? updatedProject : p,
+            );
+            this.resetProjectForm();
+            this.message =
+              'Das Projekt wurde erfolgreich aktualisiert.';
+          },
+          error: (error: unknown) => {
+            console.error(
+              'Fehler beim Aktualisieren des Projekts:',
+              error,
+            );
+            this.errorMessage =
+              'Das Projekt konnte nicht aktualisiert werden.';
+          },
+        });
+    } else {
+      this.projectService
+        .createProject(request)
+        .pipe(
+          finalize(() => {
+            this.saving = false;
+          }),
+        )
+        .subscribe({
+          next: (project) => {
+            this.projects = [
+              ...this.projects,
+              project,
+            ];
 
-          this.projectForm =
-            this.createEmptyProjectForm();
+            this.resetProjectForm();
 
-          this.message =
-            'Das Projekt wurde erfolgreich gespeichert.';
-        },
-        error: (error: unknown) => {
-          console.error(
-            'Fehler beim Speichern des Projekts:',
-            error,
-          );
+            this.message =
+              'Das Projekt wurde erfolgreich gespeichert.';
+          },
+          error: (error: unknown) => {
+            console.error(
+              'Fehler beim Speichern des Projekts:',
+              error,
+            );
 
-          this.errorMessage =
-            'Das Projekt konnte nicht gespeichert werden.';
-        },
-      });
+            this.errorMessage =
+              'Das Projekt konnte nicht gespeichert werden.';
+          },
+        });
+    }
+  }
+
+  protected editProject(project: Project): void {
+    this.editingProjectId = project.id;
+    this.projectForm = {
+      title: project.title || '',
+      imageUrl: project.imageUrl || '',
+      description:
+        project.shortDescription || project.fullDescription || '',
+      shortDescription: project.shortDescription || '',
+      fullDescription: project.fullDescription || '',
+      screenshots: project.screenshots
+        ? project.screenshots.join(', ')
+        : '',
+      downloadUrl: project.downloadUrl || '',
+      technologies: project.technologies
+        ? project.technologies.join(', ')
+        : '',
+      githubUrl: project.githubUrl || '',
+      liveUrl: project.liveUrl || '',
+      featured: project.featured || false,
+    };
+    this.showSection('project');
+  }
+
+  protected cancelEdit(): void {
+    this.editingProjectId = null;
+    this.resetProjectForm();
   }
 
   protected deleteProject(
@@ -237,6 +272,10 @@ export class AdminDashboard implements OnInit {
 
           this.message =
             'Das Projekt wurde gelöscht.';
+
+          if (this.editingProjectId === project.id) {
+            this.cancelEdit();
+          }
         },
         error: (error: unknown) => {
           console.error(
@@ -251,6 +290,7 @@ export class AdminDashboard implements OnInit {
   }
 
   protected resetProjectForm(): void {
+    this.editingProjectId = null;
     this.projectForm =
       this.createEmptyProjectForm();
 
@@ -326,7 +366,7 @@ export class AdminDashboard implements OnInit {
           .trim() || null,
 
       featured:
-        this.projectForm.featured,
+      this.projectForm.featured,
 
       technologies:
         this.splitValues(
@@ -335,11 +375,6 @@ export class AdminDashboard implements OnInit {
     };
   }
 
-  /**
-   * Dein bisheriges HTML verwendet projectForm.description.
-   * Falls shortDescription ausgefüllt ist, wird dieses Feld
-   * bevorzugt. Ansonsten verwenden wir description.
-   */
   private getShortDescription(): string {
     const shortDescription =
       this.projectForm
@@ -355,11 +390,6 @@ export class AdminDashboard implements OnInit {
       .trim();
   }
 
-  /**
-   * Für die ausführliche Beschreibung wird zuerst
-   * fullDescription verwendet. Falls dieses Feld leer ist,
-   * wird das bestehende description-Feld genommen.
-   */
   private getFullDescription(): string {
     const fullDescription =
       this.projectForm
@@ -378,6 +408,7 @@ export class AdminDashboard implements OnInit {
   private splitValues(
     value: string,
   ): string[] {
+    if (!value) return [];
     return value
       .split(',')
       .map((entry) =>

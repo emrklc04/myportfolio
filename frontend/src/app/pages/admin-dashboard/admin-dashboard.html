@@ -82,19 +82,17 @@
       </div>
     </header>
 
-    <div class="backend-notice">
-      <span aria-hidden="true">⚡</span>
-
-      <div>
-        <strong>Frontend-Vorschau</strong>
-
-        <p>
-          Die Formulare sind bereits vorbereitet. Speichern,
-          Bearbeiten und Löschen werden später über das
-          Spring-Boot-Backend umgesetzt.
-        </p>
+    @if (message) {
+      <div class="alert alert-success" style="margin-top: 20px; color: #c9e4ca;">
+        {{ message }}
       </div>
-    </div>
+    }
+
+    @if (errorMessage) {
+      <div class="alert alert-danger" style="margin-top: 20px; color: #ffd1d1;">
+        {{ errorMessage }}
+      </div>
+    }
 
     @if (activeSection === 'overview') {
       <section class="dashboard-section">
@@ -118,11 +116,11 @@
                 Skills
               </span>
 
-              <h3>Neuen Skill-Circle eintragen</h3>
+              <h3>Skill-Circle eintragen und bearbeiten</h3>
 
               <p>
                 Name, Prozentwert, Beschreibung und passende
-                Projekttechnologien vorbereiten.
+                Projekttechnologien verwalten.
               </p>
             </div>
 
@@ -145,11 +143,10 @@
                 Projekte
               </span>
 
-              <h3>Neues Projekt eintragen</h3>
+              <h3>Projekt eintragen und bearbeiten</h3>
 
               <p>
-                Projektinformationen, Technologien, Links und
-                Bildpfade vorbereiten.
+                Projektinformationen, Technologien, Links, Screenshots und Pfade verwalten.
               </p>
             </div>
 
@@ -157,42 +154,6 @@
               →
             </span>
           </button>
-        </div>
-
-        <div class="future-functions">
-          <h3>Für die Backend-Anbindung vorbereitet</h3>
-
-          <div class="function-grid">
-            <div>
-              <span aria-hidden="true">✓</span>
-              Login über Benutzername und Passwort
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Neue Skills erstellen
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Neue Projekte erstellen
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Bilder und ZIP-Dateien hochladen
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Einträge bearbeiten und löschen
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Daten aus PostgreSQL laden
-            </div>
-          </div>
         </div>
       </section>
     }
@@ -332,9 +293,44 @@
 
     @if (activeSection === 'project') {
       <section class="dashboard-section">
-        <div class="section-heading">
+        <!-- Projektliste (Reine Textliste mit Bearbeiten & Löschen) -->
+        <div class="project-list-wrapper">
+          <h3>Vorhandene Projekte</h3>
+
+          @if (loadingProjects) {
+            <p class="loading-state">Projekte werden geladen...</p>
+          } @else if (projects.length === 0) {
+            <p class="empty-state">Keine Projekte vorhanden.</p>
+          } @else {
+            <ul class="project-text-list">
+              @for (project of projects; track project.id) {
+                <li class="project-list-item">
+                  <span class="project-item-title">{{ project.title }}</span>
+                  <div class="project-item-actions">
+                    <button
+                      type="button"
+                      class="action-btn edit-btn"
+                      (click)="editProject(project)"
+                    >
+                      Bearbeiten
+                    </button>
+                    <button
+                      type="button"
+                      class="action-btn delete-btn"
+                      (click)="deleteProject(project)"
+                    >
+                      Löschen
+                    </button>
+                  </div>
+                </li>
+              }
+            </ul>
+          }
+        </div>
+
+        <div class="section-heading" style="margin-top: 40px;">
           <p>Projekt-Verwaltung</p>
-          <h2>Neues Projekt vorbereiten</h2>
+          <h2>{{ editingProjectId ? 'Projekt bearbeiten' : 'Neues Projekt erstellen' }}</h2>
 
           <span>
             Neue Projekte werden im Backend gespeichert und
@@ -507,17 +503,27 @@
           </div>
 
           <div class="form-actions">
-            <button
-              type="button"
-              class="secondary-button"
-              (click)="resetProjectForm()"
-            >
-              Formular leeren
-            </button>
+            @if (editingProjectId) {
+              <button
+                type="button"
+                class="secondary-button"
+                (click)="cancelEdit()"
+              >
+                Abbrechen
+              </button>
+            } @else {
+              <button
+                type="button"
+                class="secondary-button"
+                (click)="resetProjectForm()"
+              >
+                Formular leeren
+              </button>
+            }
 
-            <button type="submit" class="primary-button">
+            <button type="submit" class="primary-button" [disabled]="saving">
               <span>
-                Projekt speichern
+                {{ editingProjectId ? 'Änderungen speichern' : 'Projekt speichern' }}
               </span>
 
               <span aria-hidden="true">→</span>

@@ -6,27 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9ae4fe17-9e0e-4090-8cfa-ef69baa550da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/ProjectResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/ProjectResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/entity/Project.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/tour-planner-screenshot-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/tour-planner-screenshot-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/tour-planner-screenshot-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/tour-planner-screenshot-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/tour-planner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/tour-planner.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/models/project.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/models/project.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-login/admin-login.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-login/admin-login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-login/admin-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-login/admin-login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +118,7 @@
       <workItem from="1784633705766" duration="2907000" />
       <workItem from="1784733267404" duration="1233000" />
       <workItem from="1784734586393" duration="2499000" />
-      <workItem from="1784992617786" duration="4739000" />
+      <workItem from="1784992617786" duration="9164000" />
     </task>
     <servers />
   </component>

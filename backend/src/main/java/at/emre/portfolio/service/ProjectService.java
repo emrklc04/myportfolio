@@ -141,11 +141,14 @@ public class ProjectService {
                 )
         );
 
-        project.setScreenshots(
-                normalizeList(
-                        request.screenshots()
-                )
-        );
+        // Hibernate-freundliches Mapping für ElementCollections
+        List<String> screenshots = normalizeList(request.screenshots());
+        if (project.getScreenshots() == null) {
+            project.setScreenshots(screenshots);
+        } else {
+            project.getScreenshots().clear();
+            project.getScreenshots().addAll(screenshots);
+        }
 
         project.setGithubUrl(
                 normalizeNullable(
@@ -169,11 +172,14 @@ public class ProjectService {
                 request.featured()
         );
 
-        project.setTechnologies(
-                normalizeList(
-                        request.technologies()
-                )
-        );
+        // Hibernate-freundliches Mapping für ElementCollections
+        List<String> technologies = normalizeList(request.technologies());
+        if (project.getTechnologies() == null) {
+            project.setTechnologies(technologies);
+        } else {
+            project.getTechnologies().clear();
+            project.getTechnologies().addAll(technologies);
+        }
     }
 
     private String createUniqueSlug(
@@ -231,23 +237,23 @@ public class ProjectService {
             List<String> values
     ) {
         if (values == null) {
-            return List.of();
+            return new ArrayList<>();
         }
 
-        return values.stream()
-                .map(String::trim)
-                .filter(value ->
-                        !value.isBlank()
-                )
-                .distinct()
-                .toList();
+        return new ArrayList<>(
+                values.stream()
+                        .map(String::trim)
+                        .filter(value -> !value.isBlank())
+                        .distinct()
+                        .toList()
+        );
     }
 
     private List<String> copyList(
             List<String> values
     ) {
         if (values == null) {
-            return List.of();
+            return new ArrayList<>();
         }
 
         return new ArrayList<>(values);
