@@ -30,6 +30,15 @@ export class ProjectCard implements OnDestroy {
     }
   }
 
+  protected useFallbackImage(event: Event): void {
+    const image = event.target as HTMLImageElement;
+    image.onerror = null;
+    image.src = 'data:image/svg+xml;charset=UTF-8,' +
+      encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700"><rect width="1200" height="700" fill="#172033"/><text x="600" y="360" text-anchor="middle" fill="#aeb8cc" font-family="Arial" font-size="48">Project Preview</text></svg>',
+      );
+  }
+
   protected stopPropagation(event: Event): void {
     event.stopPropagation();
   }

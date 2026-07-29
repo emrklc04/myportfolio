@@ -99,7 +99,23 @@
         </div>
       </div>
 
-      @if (filteredProjects.length > 0) {
+      @if (isLoading) {
+        <div class="empty-state">
+          <h3>Projekte werden geladen ...</h3>
+        </div>
+      } @else if (loadError) {
+        <div class="empty-state">
+          <h3>Verbindung zum Backend fehlgeschlagen</h3>
+          <p>{{ loadError }}</p>
+          <button
+            type="button"
+            class="primary-button"
+            (click)="loadProjects()"
+          >
+            Erneut versuchen
+          </button>
+        </div>
+      } @else if (filteredProjects.length > 0) {
         <div class="projects-grid">
           @for (project of filteredProjects; track project.id) {
             <app-project-card [project]="project"></app-project-card>

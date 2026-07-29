@@ -1,3 +1,9 @@
+:host {
+  display: block;
+  min-width: 0;
+  height: 100%;
+}
+
 .project-card {
   display: flex;
   flex-direction: column;
@@ -257,13 +263,15 @@
 
 .screenshots-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Erstellt automatisch so viele Spalten wie reingehören (mind. 250px breit) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 18px;
   margin-top: 26px;
 }
 
 .screenshot-link {
-  min-height: 220px;
+  min-height: 200px;
+  max-height: 350px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   border-radius: 16px;
@@ -271,9 +279,11 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
+/* WICHTIG: Entferne die Sonderregel für das erste Bild,
+   damit alle Bilder gleich behandelt werden! */
 .screenshot-link:first-child {
-  grid-column: 1 / -1;
-  min-height: 350px;
+  grid-column: auto;
+  min-height: 200px;
 }
 
 .screenshot-image {

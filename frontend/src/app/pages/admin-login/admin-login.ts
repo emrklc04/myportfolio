@@ -1,6 +1,24 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import {
+  Component,
+  inject,
+} from '@angular/core';
+
+import {
+  FormsModule,
+} from '@angular/forms';
+
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
+
+import {
+  finalize,
+} from 'rxjs';
+
+import {
+  AuthService,
+} from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -13,31 +31,58 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './admin-login.css',
 })
 export class AdminLogin {
+  private readonly authService =
+    inject(AuthService);
+
+  private readonly router =
+    inject(Router);
+
   protected username = '';
   protected password = '';
+
   protected passwordVisible = false;
   protected submitted = false;
+  protected loading = false;
 
-  constructor(private readonly router: Router) {}
+  protected errorMessage = '';
 
   protected togglePasswordVisibility(): void {
-    this.passwordVisible = !this.passwordVisible;
+    this.passwordVisible =
+      !this.passwordVisible;
   }
 
-  protected openAdminDashboard(): void {
+  protected login(): void {
     this.submitted = true;
+    this.errorMessage = '';
 
-    if (!this.username.trim() || !this.password.trim()) {
+    if (
+      !this.username.trim() ||
+      !this.password.trim()
+    ) {
       return;
     }
 
-    /*
-     * Hier wird später die Login-Anfrage an das Backend eingebaut.
-     *
-     * Beispiel:
-     * this.authService.login(this.username, this.password)
-     */
+    this.loading = true;
 
-    void this.router.navigate(['/admin/dashboard']);
+    this.authService
+      .login(
+        this.username.trim(),
+        this.password,
+      )
+      .pipe(
+        finalize(() =>
+          this.loading = false,
+        ),
+      )
+      .subscribe({
+        next: () =>
+          void this.router.navigate([
+            '/admin/dashboard',
+          ]),
+        error: () => {
+          this.errorMessage =
+            'Benutzername oder Passwort ist falsch.';
+        },
+      });
   }
 }

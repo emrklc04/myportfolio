@@ -11,6 +11,7 @@
       [src]="project.imageUrl"
       [alt]="project.title"
       class="project-image"
+      (error)="useFallbackImage($event)"
     />
 
     @if (project.featured) {
@@ -26,10 +27,6 @@
         {{ project.shortDescription }}
       </p>
     </div>
-
-    <p class="description">
-      {{ project.description }}
-    </p>
 
     <div class="technology-list">
       @for (technology of project.technologies; track technology) {
@@ -68,6 +65,7 @@
           [src]="project.imageUrl"
           [alt]="project.title"
           class="modal-cover-image"
+          (error)="useFallbackImage($event)"
         />
 
         @if (project.featured) {
@@ -91,7 +89,7 @@
         </header>
 
         <p class="modal-description">
-          {{ project.description }}
+          {{ project.fullDescription || project.description }}
         </p>
 
         <div class="technology-list modal-technology-list">
@@ -100,33 +98,35 @@
           }
         </div>
 
-        <section class="screenshots-section">
-          <div class="screenshots-heading">
-            <p class="modal-eyebrow">Application Preview</p>
-            <h3>Screenshots</h3>
-          </div>
+        @if ((project.screenshots?.length ?? 0) > 0) {
+          <section class="screenshots-section">
+            <div class="screenshots-heading">
+              <p class="modal-eyebrow">Application Preview</p>
+              <h3>Screenshots</h3>
+            </div>
 
-          <div class="screenshots-grid">
-            @for (
-              screenshot of project.screenshots;
-              track screenshot;
-              let index = $index
-              ) {
-              <a
-                class="screenshot-link"
-                [href]="screenshot"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  [src]="screenshot"
-                  [alt]="project.title + ' Screenshot ' + (index + 1)"
-                  class="screenshot-image"
-                />
-              </a>
-            }
-          </div>
-        </section>
+            <div class="screenshots-grid">
+              @for (
+                screenshot of (project.screenshots ?? []);
+                track $index;
+                let index = $index
+                ) {
+                <a
+                  class="screenshot-link"
+                  [href]="screenshot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    [src]="screenshot"
+                    [alt]="project.title + ' Screenshot ' + (index + 1)"
+                    class="screenshot-image"
+                  />
+                </a>
+              }
+            </div>
+          </section>
+        }
 
         <div class="project-actions">
           @if (project.downloadUrl) {
@@ -136,6 +136,17 @@
               download
             >
               ZIP herunterladen
+            </a>
+          }
+
+          @if (project.liveUrl) {
+            <a
+              class="button primary-button"
+              [href]="project.liveUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live ansehen
             </a>
           }
 

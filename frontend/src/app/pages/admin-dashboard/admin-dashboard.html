@@ -337,8 +337,8 @@
           <h2>Neues Projekt vorbereiten</h2>
 
           <span>
-            Der Speichern-Button führt aktuell noch keinen
-            API-Aufruf aus.
+            Neue Projekte werden im Backend gespeichert und
+            anschließend auf der Startseite angezeigt.
           </span>
         </div>
 
@@ -387,7 +387,7 @@
 
               <textarea
                 name="projectDescription"
-                [(ngModel)]="projectForm.description"
+                [(ngModel)]="projectForm.fullDescription"
                 rows="6"
                 placeholder="Beschreibe die Funktionen und Ziele des Projekts"
               ></textarea>
@@ -431,6 +431,17 @@
                 name="projectGithub"
                 [(ngModel)]="projectForm.githubUrl"
                 placeholder="https://github.com/..."
+              />
+            </label>
+
+            <label class="form-field">
+              <span>Live-Link</span>
+
+              <input
+                type="url"
+                name="projectLive"
+                [(ngModel)]="projectForm.liveUrl"
+                placeholder="https://..."
               />
             </label>
 
@@ -506,7 +517,7 @@
 
             <button type="submit" class="primary-button">
               <span>
-                Projekt später speichern
+                Projekt speichern
               </span>
 
               <span aria-hidden="true">→</span>

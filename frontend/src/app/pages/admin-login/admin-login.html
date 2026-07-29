@@ -87,7 +87,7 @@
 
       <form
         class="login-form"
-        (ngSubmit)="openAdminDashboard()"
+        (ngSubmit)="login()"
         novalidate
       >
         <label class="form-field">
@@ -138,14 +138,27 @@
 
           @if (submitted && !password.trim()) {
             <small class="field-error">
-              Bitte gib ein Passwort ein.
+              {{ errorMessage }}
             </small>
           }
         </label>
 
-        <button type="submit" class="login-button">
-          <span>Zum Admin-Dashboard</span>
-          <span aria-hidden="true">→</span>
+        <button
+          type="submit"
+          class="login-button"
+          [disabled]="loading"
+        >
+  <span>
+    {{
+      loading
+        ? 'Anmeldung läuft …'
+        : 'Zum Admin-Dashboard'
+    }}
+  </span>
+
+          <span aria-hidden="true">
+    →
+  </span>
         </button>
       </form>
 

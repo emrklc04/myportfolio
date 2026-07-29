@@ -1,6 +1,17 @@
 package at.emre.portfolio.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,11 +37,26 @@ public class Project {
     @Column(name = "full_description", columnDefinition = "TEXT")
     private String fullDescription;
 
+    @Column(name = "image_url", length = 500)
+    private String imageUrl;
+
+    @ElementCollection
+    @CollectionTable(
+            name = "project_screenshots",
+            joinColumns = @JoinColumn(name = "project_id")
+    )
+    @OrderColumn(name = "display_order")
+    @Column(name = "screenshot_url", nullable = false, length = 500)
+    private List<String> screenshots = new ArrayList<>();
+
     @Column(name = "github_url", length = 500)
     private String githubUrl;
 
     @Column(name = "live_url", length = 500)
     private String liveUrl;
+
+    @Column(name = "download_url", length = 500)
+    private String downloadUrl;
 
     @Column(nullable = false)
     private boolean featured;
@@ -97,6 +123,22 @@ public class Project {
         this.fullDescription = fullDescription;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public List<String> getScreenshots() {
+        return screenshots;
+    }
+
+    public void setScreenshots(List<String> screenshots) {
+        this.screenshots = screenshots;
+    }
+
     public String getGithubUrl() {
         return githubUrl;
     }
@@ -111,6 +153,14 @@ public class Project {
 
     public void setLiveUrl(String liveUrl) {
         this.liveUrl = liveUrl;
+    }
+
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
     }
 
     public boolean isFeatured() {
