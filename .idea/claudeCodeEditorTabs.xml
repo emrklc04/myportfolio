@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ClaudeCodeEditorTabs">
+    <option name="activeSessionId" value="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" />
+    <option name="openSessionIds">
+      <list>
+        <option value="0e54ea87-410c-47d3-b166-4d1e6bd64ab7" />
+        <option value="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" />
+      </list>
+    </option>
+    <option name="sessionPaths">
+      <map>
+        <entry key="0e54ea87-410c-47d3-b166-4d1e6bd64ab7" value="/sessions/new" />
+        <entry key="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" value="/sessions/7fc53a4b-fedb-47ca-9f75-32af1f9f7e1a" />
+      </map>
+    </option>
+    <option name="sessionTitles">
+      <map>
+        <entry key="0e54ea87-410c-47d3-b166-4d1e6bd64ab7" value="Claude Code" />
+        <entry key="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" value="jedes mal wenn ich ein skill circle eintragen möch" />
+      </map>
+    </option>
+  </component>
+</project>

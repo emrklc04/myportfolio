@@ -233,31 +233,37 @@
         </p>
       </div>
 
-      <div class="skills-grid">
-        @for (skill of skills; track skill.name) {
-          <article class="skill-card">
-            <button
-              type="button"
-              class="skill-button"
-              [attr.aria-label]="
-          'Details und Projekte zu ' + skill.name + ' öffnen'
-        "
-              [attr.aria-busy]="rotatingSkillName === skill.name"
-              (click)="openSkillDetails(skill, skillCircle)"
-            >
-        <span
-          #skillCircle
-          class="skill-circle"
-        >
-          <span class="skill-circle-inner">
-            <strong>{{ skill.name }}</strong>
-            <small>Details ansehen</small>
-          </span>
-        </span>
-            </button>
-          </article>
-        }
-      </div>
+      @if (loadingSkills) {
+        <p style="color: rgba(255, 255, 255, 0.7);">Skills werden geladen...</p>
+      } @else if (skills.length === 0) {
+        <p style="color: rgba(255, 255, 255, 0.7);">Keine Skills vorhanden.</p>
+      } @else {
+        <div class="skills-grid">
+          @for (skill of skills; track skill.name) {
+            <article class="skill-card">
+              <button
+                type="button"
+                class="skill-button"
+                [attr.aria-label]="
+                  'Details und Projekte zu ' + skill.name + ' öffnen'
+                "
+                [attr.aria-busy]="rotatingSkillName === skill.name"
+                (click)="openSkillDetails(skill, skillCircle)"
+              >
+                <span
+                  #skillCircle
+                  class="skill-circle"
+                >
+                  <span class="skill-circle-inner">
+                    <strong>{{ skill.name }}</strong>
+                    <small>Details ansehen</small>
+                  </span>
+                </span>
+              </button>
+            </article>
+          }
+        </div>
+      }
     </div>
   </section>
 
@@ -332,14 +338,14 @@
             </div>
 
             <span class="project-count">
-            {{ filteredSkillProjects.length }}
+              {{ filteredSkillProjects.length }}
 
               {{
                 filteredSkillProjects.length === 1
                   ? 'Projekt'
                   : 'Projekte'
               }}
-          </span>
+            </span>
           </div>
 
           @if (filteredSkillProjects.length > 0) {
@@ -367,3 +373,4 @@
       </section>
     </div>
   }
+</main>

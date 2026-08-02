@@ -544,8 +544,6 @@
 }
 
 .preview-circle {
-  --preview-level: 0%;
-
   display: grid;
   width: 120px;
   height: 120px;
@@ -553,12 +551,7 @@
   padding: 8px;
   place-items: center;
   border-radius: 50%;
-  background:
-    conic-gradient(
-      #c9e4ca 0 var(--preview-level),
-      rgba(148, 163, 184, 0.16)
-      var(--preview-level) 100%
-    );
+  background: rgba(148, 163, 184, 0.16);
 }
 
 .preview-circle > div {
@@ -573,14 +566,8 @@
   text-align: center;
 }
 
-.preview-circle strong {
-  color: var(--text-primary);
-  font-size: 1.35rem;
-}
-
 .preview-circle span {
   max-width: 80px;
-  margin-top: 6px;
   color: #c9e4ca;
   font-size: 0.72rem;
   font-weight: 700;

@@ -3,16 +3,14 @@ import {
   Component,
   HostListener,
   inject,
+  OnInit,
 } from '@angular/core';
 
 import { ProjectCard } from '../../components/project-card/project-card';
-import { PROJECTS } from '../../data/projects';
-
-interface Skill {
-  name: string;
-  description: string[];
-  projectTechnologies: string[];
-}
+import { Project } from '../../models/project.model';
+import { Skill } from '../../models/skill.model';
+import { ProjectService } from '../../services/project.service';
+import { SkillService } from '../../services/skill.service';
 
 interface TimelineEntry {
   id: string;
@@ -30,9 +28,14 @@ interface TimelineEntry {
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {
+export class About implements OnInit {
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
-  protected readonly projects = PROJECTS;
+  private readonly projectService = inject(ProjectService);
+  private readonly skillService = inject(SkillService);
+
+  protected projects: Project[] = [];
+  protected skills: Skill[] = [];
+  protected loadingSkills = true;
 
   protected readonly workExperience: TimelineEntry[] = [
     {
@@ -134,144 +137,63 @@ export class About {
     },
   ];
 
-  protected readonly skills: Skill[] = [
-    {
-      name: 'Angular',
-      description: [
-        'Entwicklung komponentenbasierter Single-Page Applications.',
-        'Verwendung von Standalone Components und Angular Routing.',
-        'Datenaustausch zwischen Komponenten mit Inputs und Services.',
-        'Anbindung von REST-APIs über den Angular HttpClient.',
-        'Umsetzung von Formularen, Filtern und dynamischen Benutzeroberflächen.',
-      ],
-      projectTechnologies: ['Angular'],
-    },
-    {
-      name: 'TypeScript',
-      description: [
-        'Typisierte Entwicklung von Angular-Anwendungen.',
-        'Erstellung eigener Interfaces und Datenmodelle.',
-        'Verwendung von Klassen, Funktionen und modernen Sprachfunktionen.',
-        'Asynchrone Verarbeitung von API-Anfragen.',
-        'Strukturierung größerer Frontend-Projekte.',
-      ],
-      projectTechnologies: ['TypeScript'],
-    },
-    {
-      name: 'JavaScript',
-      description: [
-        'Arbeit mit Funktionen, Arrays, Objekten und Events.',
-        'Dynamische Verarbeitung und Darstellung von Daten.',
-        'Verwendung moderner JavaScript-Syntax.',
-        'Grundlegender Umgang mit asynchronen Abläufen.',
-      ],
-      projectTechnologies: ['JavaScript'],
-    },
-    {
-      name: 'Java',
-      description: [
-        'Objektorientierte Entwicklung mit Klassen und Interfaces.',
-        'Entwicklung von Backend-Anwendungen mit Spring Boot.',
-        'Aufbau von Controller-, Service- und Repository-Schichten.',
-        'Verarbeitung von DTOs und Datenbankentitäten.',
-        'Erstellung und Ausführung von Unit-Tests.',
-      ],
-      projectTechnologies: ['Java'],
-    },
-    {
-      name: 'Spring Boot',
-      description: [
-        'Entwicklung von REST-Schnittstellen.',
-        'Umsetzung einer mehrschichtigen Backend-Architektur.',
-        'Absicherung von Endpunkten mit JWT und Spring Security.',
-        'Datenbankzugriff mit Spring Data JPA.',
-        'Validierung und Fehlerbehandlung im Backend.',
-      ],
-      projectTechnologies: ['Spring Boot'],
-    },
-    {
-      name: 'Python',
-      description: [
-        'Entwicklung von Anwendungen mit Python und Flet.',
-        'Verarbeitung und Speicherung von Anwendungsdaten.',
-        'Erzeugung und Verwaltung von QR-Codes.',
-        'Arbeit mit Funktionen, Klassen und Modulen.',
-        'Anbindung externer KI-Schnittstellen.',
-      ],
-      projectTechnologies: ['Python'],
-    },
-    {
-      name: 'PostgreSQL',
-      description: [
-        'Entwurf relationaler Datenbankstrukturen.',
-        'Speicherung von Benutzern, Projekten, Touren und Logs.',
-        'Verknüpfung von Tabellen durch Primär- und Fremdschlüssel.',
-        'Datenbankzugriff über Spring Data JPA und Hibernate.',
-        'Verwendung von Flyway für Datenbankmigrationen.',
-      ],
-      projectTechnologies: ['PostgreSQL'],
-    },
-    {
-      name: 'Git',
-      description: [
-        'Versionsverwaltung von Einzel- und Gruppenprojekten.',
-        'Arbeit mit Branches, Commits und Merge-Vorgängen.',
-        'Veröffentlichung von Projekten auf GitHub.',
-        'Zusammenarbeit in Softwareprojekten.',
-        'Nachvollziehbare Dokumentation von Änderungen.',
-      ],
-      projectTechnologies: ['Git', 'GitHub'],
-    },
-    {
-      name: 'HTML',
-      description: [
-        'Erstellung semantisch strukturierter Webseiten.',
-        'Aufbau responsiver Seiten und Komponenten.',
-        'Verwendung barrierearmer HTML-Elemente.',
-        'Erstellung von Formularen und interaktiven Bereichen.',
-        'Verwendung moderner Angular-Templates.',
-      ],
-      projectTechnologies: ['HTML'],
-    },
-    {
-      name: 'CSS',
-      description: [
-        'Umsetzung responsiver Layouts mit Grid und Flexbox.',
-        'Erstellung von Animationen und Übergängen.',
-        'Verwendung von CSS-Variablen und Farbkonzepten.',
-        'Gestaltung von Karten, Modals und Skill-Anzeigen.',
-        'Anpassung der Benutzeroberfläche für mobile Geräte.',
-      ],
-      projectTechnologies: ['CSS'],
-    },
-  ];
-
   protected openEntryId: string | null = null;
   protected selectedSkill: Skill | null = null;
   protected rotatingSkillName: string | null = null;
 
-  protected get filteredSkillProjects() {
-    if (!this.selectedSkill) {
+  ngOnInit(): void {
+    this.loadSkills();
+    this.loadProjects();
+  }
+
+  private loadSkills(): void {
+    this.loadingSkills = true;
+    this.skillService.getAllSkills().subscribe({
+      next: (skills) => {
+        this.skills = skills;
+        this.loadingSkills = false;
+        this.changeDetectorRef.detectChanges();
+      },
+      error: (err) => {
+        console.error('Fehler beim Laden der Skills:', err);
+        this.loadingSkills = false;
+        this.changeDetectorRef.detectChanges();
+      },
+    });
+  }
+
+  private loadProjects(): void {
+    this.projectService.getAllProjects().subscribe({
+      next: (projects) => {
+        this.projects = projects;
+        this.changeDetectorRef.detectChanges();
+      },
+      error: (err) => {
+        console.error('Fehler beim Laden der Projekte:', err);
+      },
+    });
+  }
+
+  protected get filteredSkillProjects(): Project[] {
+    if (!this.selectedSkill || !this.selectedSkill.projectTechnologies) {
       return [];
     }
 
-    const selectedTechnologies =
-      this.selectedSkill.projectTechnologies.map((technology) =>
-        technology.trim().toLowerCase(),
-      );
+    const selectedTechnologies = this.selectedSkill.projectTechnologies.map(
+      (tech) => tech.trim().toLowerCase(),
+    );
 
-    return this.projects.filter((project) =>
-      project.technologies.some((technology) =>
-        selectedTechnologies.includes(
-          technology.trim().toLowerCase(),
+    return this.projects.filter(
+      (project) =>
+        project.technologies &&
+        project.technologies.some((tech) =>
+          selectedTechnologies.includes(tech.trim().toLowerCase()),
         ),
-      ),
     );
   }
 
   protected toggleEntry(entryId: string): void {
-    this.openEntryId =
-      this.openEntryId === entryId ? null : entryId;
+    this.openEntryId = this.openEntryId === entryId ? null : entryId;
   }
 
   protected isEntryOpen(entryId: string): boolean {
@@ -293,17 +215,14 @@ export class About {
       const animation = skillCircle.animate(
         [
           {
-            transform:
-              'translateY(0) rotateY(0deg) scale(1)',
+            transform: 'translateY(0) rotateY(0deg) scale(1)',
           },
           {
-            transform:
-              'translateY(-10px) rotateY(180deg) scale(1.06)',
+            transform: 'translateY(-10px) rotateY(180deg) scale(1.06)',
             offset: 0.5,
           },
           {
-            transform:
-              'translateY(0) rotateY(360deg) scale(1)',
+            transform: 'translateY(0) rotateY(360deg) scale(1)',
           },
         ],
         {
@@ -314,10 +233,7 @@ export class About {
 
       await animation.finished;
     } catch {
-      /*
-       * Falls die Animation vom Browser abgebrochen wird,
-       * soll das Popup trotzdem geöffnet werden.
-       */
+      /* Animation Fallback */
     }
 
     this.selectedSkill = skill;

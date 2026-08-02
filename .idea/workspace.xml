@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9ae4fe17-9e0e-4090-8cfa-ef69baa550da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/entity/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/about/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/about/about.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/about/about.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.ts" afterDir="false" />
@@ -60,7 +59,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -118,7 +117,8 @@
       <workItem from="1784633705766" duration="2907000" />
       <workItem from="1784733267404" duration="1233000" />
       <workItem from="1784734586393" duration="2499000" />
-      <workItem from="1784992617786" duration="9164000" />
+      <workItem from="1784992617786" duration="13413000" />
+      <workItem from="1785683691422" duration="5050000" />
     </task>
     <servers />
   </component>
