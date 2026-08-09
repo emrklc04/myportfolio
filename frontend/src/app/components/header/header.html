@@ -1,22 +1,21 @@
 <header class="header">
   <div class="header-container">
     <a routerLink="/" class="logo">
-      <span class="logo-symbol">&lt;/&gt;</span>
       <span>Emre Kilic</span>
     </a>
 
     <nav class="navigation">
       <a
         routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
+        [class.active]="isProjectsActive"
+        (click)="goToProjects($event)"
       >
         My Projects
       </a>
 
       <a
-        routerLink="/about"
-        routerLinkActive="active"
+        href="#about"
+        [class.active]="isAboutActive"
       >
         Über mich
       </a>

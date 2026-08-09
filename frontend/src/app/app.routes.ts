@@ -14,14 +14,6 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'about',
-    title: 'Über mich | Emre Kilic',
-    loadComponent: () =>
-      import('./pages/about/about').then(
-        (component) => component.About,
-      ),
-  },
-  {
     path: 'admin',
     title: 'Admin Login | Emre Kilic',
     loadComponent: () =>

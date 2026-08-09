@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ClaudeCodeEditorTabs">
-    <option name="activeSessionId" value="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" />
+    <option name="activeSessionId" value="9da92d22-d878-4084-a7a2-2bb166b044d5" />
     <option name="openSessionIds">
       <list>
-        <option value="0e54ea87-410c-47d3-b166-4d1e6bd64ab7" />
-        <option value="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" />
+        <option value="df3e9586-5bc6-4453-8f85-22b3098f45b5" />
+        <option value="23104e54-feaa-42da-a0e5-e21f1b4d7220" />
+        <option value="9da92d22-d878-4084-a7a2-2bb166b044d5" />
       </list>
     </option>
     <option name="sessionPaths">
       <map>
-        <entry key="0e54ea87-410c-47d3-b166-4d1e6bd64ab7" value="/sessions/new" />
-        <entry key="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" value="/sessions/7fc53a4b-fedb-47ca-9f75-32af1f9f7e1a" />
+        <entry key="23104e54-feaa-42da-a0e5-e21f1b4d7220" value="/sessions/6bfd774d-1383-48e6-a9e6-a0a72cc90be6" />
+        <entry key="9da92d22-d878-4084-a7a2-2bb166b044d5" value="/sessions/fe7556b4-ab3e-4f8f-b326-647f40c2c77d" />
+        <entry key="df3e9586-5bc6-4453-8f85-22b3098f45b5" value="/sessions/6a15eb69-84f6-44e8-9ad0-fb95ae516d9e" />
       </map>
     </option>
     <option name="sessionTitles">
       <map>
-        <entry key="0e54ea87-410c-47d3-b166-4d1e6bd64ab7" value="Claude Code" />
-        <entry key="34e58a22-b5a0-43d7-beac-e4e8f4bbd5a3" value="jedes mal wenn ich ein skill circle eintragen möch" />
+        <entry key="23104e54-feaa-42da-a0e5-e21f1b4d7220" value="sorg dafür dass wenn ich bei über mich bin, dass i" />
+        <entry key="9da92d22-d878-4084-a7a2-2bb166b044d5" value="warum sagt er mir dass port 8080 belegt ist obwohl" />
+        <entry key="df3e9586-5bc6-4453-8f85-22b3098f45b5" value="erstelle mir ein feld auf der über mich seite unte" />
       </map>
     </option>
   </component>

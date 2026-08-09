@@ -18,7 +18,7 @@
           Projekte ansehen
         </a>
 
-        <a class="secondary-button" routerLink="/about">
+        <a class="secondary-button" href="#about">
           Mehr über mich
         </a>
       </div>
@@ -142,4 +142,400 @@
       }
     </div>
   </section>
+
+  <section id="about" class="about-section">
+    <div class="container about-grid">
+      <div class="profile-image-wrapper">
+        <img
+          src="images/profile.jpg"
+          alt="Profilbild von Emre Kilic"
+          class="profile-image"
+        />
+      </div>
+
+      <div class="about-content">
+        <p class="eyebrow">Über mich</p>
+
+        <h1>
+          Informatikstudent mit Interesse an moderner
+          Softwareentwicklung.
+        </h1>
+
+        <p>
+          Mein Name ist Emre Kilic und ich studiere Informatik an der
+          FH Technikum Wien. Besonders interessiere ich mich für moderne
+          Webanwendungen sowie für die Verbindung zwischen Frontend,
+          Backend und Datenbanken.
+        </p>
+
+        <p>
+          Während meines Studiums habe ich Projekte mit Angular, Java,
+          Spring Boot, Python und PostgreSQL umgesetzt. Dabei konnte ich
+          Erfahrungen in der Planung, Implementierung und Präsentation
+          von Softwareprojekten sammeln.
+        </p>
+
+        <div class="information-grid">
+          <div>
+            <span>Standort</span>
+            <strong>Wien, Österreich</strong>
+          </div>
+
+          <div>
+            <span>Studium</span>
+            <strong>Bachelor Informatik</strong>
+          </div>
+
+          <div>
+            <span>Sprachen</span>
+            <strong>Deutsch, Türkisch, Englisch</strong>
+          </div>
+
+          <div>
+            <span>Schwerpunkt</span>
+            <strong>Full-Stack Development</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey-section">
+    <div class="container">
+      <div class="journey-heading">
+        <p class="eyebrow">Mein Werdegang</p>
+
+        <h2>Berufserfahrung und Bildungsweg</h2>
+
+        <p>
+          Eine Übersicht meiner bisherigen beruflichen Stationen und
+          meiner Ausbildung. Durch Anklicken einer Station werden
+          weitere Details eingeblendet.
+        </p>
+      </div>
+
+      <div class="journey-grid">
+        <section
+          class="journey-column"
+          aria-labelledby="work-heading"
+        >
+          <div class="column-heading">
+            <span class="column-number">01</span>
+
+            <div>
+              <p>Erfahrung</p>
+              <h3 id="work-heading">Berufserfahrung</h3>
+            </div>
+          </div>
+
+          <div class="timeline-list">
+            @for (entry of workExperience; track entry.id) {
+              <article
+                class="timeline-item"
+                [class.open]="isEntryOpen(entry.id)"
+              >
+                <button
+                  type="button"
+                  class="timeline-trigger"
+                  [attr.aria-expanded]="isEntryOpen(entry.id)"
+                  [attr.aria-controls]="entry.id + '-content'"
+                  (click)="toggleEntry(entry.id)"
+                >
+                  <span
+                    class="timeline-marker"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span class="timeline-summary">
+                    <span class="timeline-period">
+                      {{ entry.period }}
+                    </span>
+
+                    <strong>{{ entry.title }}</strong>
+
+                    <span>
+                      {{ entry.organization }} ·
+                      {{ entry.location }}
+                    </span>
+                  </span>
+
+                  <span
+                    class="timeline-toggle"
+                    aria-hidden="true"
+                  >
+                    {{ isEntryOpen(entry.id) ? '−' : '+' }}
+                  </span>
+                </button>
+
+                <div
+                  class="timeline-details"
+                  [id]="entry.id + '-content'"
+                  [class.visible]="isEntryOpen(entry.id)"
+                >
+                  <div class="timeline-details-inner">
+                    <ul>
+                      @for (
+                        task of entry.description;
+                        track task
+                        ) {
+                        <li>{{ task }}</li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+
+        <section
+          class="journey-column"
+          aria-labelledby="education-heading"
+        >
+          <div class="column-heading">
+            <span class="column-number">02</span>
+
+            <div>
+              <p>Ausbildung</p>
+              <h3 id="education-heading">Bildungsweg</h3>
+            </div>
+          </div>
+
+          <div class="timeline-list">
+            @for (entry of education; track entry.id) {
+              <article
+                class="timeline-item"
+                [class.open]="isEntryOpen(entry.id)"
+              >
+                <button
+                  type="button"
+                  class="timeline-trigger"
+                  [attr.aria-expanded]="isEntryOpen(entry.id)"
+                  [attr.aria-controls]="entry.id + '-content'"
+                  (click)="toggleEntry(entry.id)"
+                >
+                  <span
+                    class="timeline-marker"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span class="timeline-summary">
+                    <span class="timeline-period">
+                      {{ entry.period }}
+                    </span>
+
+                    <strong>{{ entry.title }}</strong>
+
+                    <span>
+                      {{ entry.organization }} ·
+                      {{ entry.location }}
+                    </span>
+                  </span>
+
+                  <span
+                    class="timeline-toggle"
+                    aria-hidden="true"
+                  >
+                    {{ isEntryOpen(entry.id) ? '−' : '+' }}
+                  </span>
+                </button>
+
+                <div
+                  class="timeline-details"
+                  [id]="entry.id + '-content'"
+                  [class.visible]="isEntryOpen(entry.id)"
+                >
+                  <div class="timeline-details-inner">
+                    <ul>
+                      @for (
+                        detail of entry.description;
+                        track detail
+                        ) {
+                        <li>{{ detail }}</li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-section">
+    <div class="container">
+      <div class="skills-heading">
+        <p class="eyebrow">Kenntnisse</p>
+
+        <h2>Technologien und Fähigkeiten</h2>
+
+        <p class="skills-introduction">
+          Klicke auf eine Technologie, um meine bisherigen Erfahrungen
+          und passende Projekte zu sehen.
+        </p>
+      </div>
+
+      @if (loadingSkills) {
+        <p style="color: rgba(255, 255, 255, 0.7);">Skills werden geladen...</p>
+      } @else if (skills.length === 0) {
+        <p style="color: rgba(255, 255, 255, 0.7);">Keine Skills vorhanden.</p>
+      } @else {
+        <div class="skills-grid">
+          @for (skill of skills; track skill.name) {
+            <article class="skill-card">
+              <button
+                type="button"
+                class="skill-button"
+                [attr.aria-label]="
+                  'Details und Projekte zu ' + skill.name + ' öffnen'
+                "
+                [attr.aria-busy]="rotatingSkillName === skill.name"
+                (click)="openSkillDetails(skill, skillCircle)"
+              >
+                <span
+                  #skillCircle
+                  class="skill-circle"
+                >
+                  <span class="skill-circle-inner">
+                    <strong>{{ skill.name }}</strong>
+                    <small>Details ansehen</small>
+                  </span>
+                </span>
+              </button>
+            </article>
+          }
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-box">
+        <p class="eyebrow">Kontakt</p>
+
+        <h2>Lust auf eine Zusammenarbeit?</h2>
+
+        <p>
+          Setzen wir uns in Kontakt – ich freue mich über deine Nachricht.
+        </p>
+
+        <a
+          class="contact-button"
+          href="mailto:kilicemre004@gmail.com"
+        >
+          E-Mail schreiben
+        </a>
+      </div>
+    </div>
+  </section>
+
+  @if (selectedSkill) {
+    <div
+      class="skill-modal-backdrop"
+      role="presentation"
+      (click)="closeSkillDetails()"
+    >
+      <section
+        class="skill-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="skill-modal-title"
+        (click)="stopPropagation($event)"
+      >
+        <button
+          type="button"
+          class="skill-modal-close"
+          aria-label="Skill-Fenster schließen"
+          (click)="closeSkillDetails()"
+        >
+          ×
+        </button>
+
+        <header class="skill-modal-header">
+          <div class="modal-skill-circle">
+            <div class="modal-skill-circle-inner">
+              <strong>{{ selectedSkill.name }}</strong>
+            </div>
+          </div>
+
+          <div>
+            <p class="skill-modal-eyebrow">
+              Technologie
+            </p>
+
+            <h2 id="skill-modal-title">
+              {{ selectedSkill.name }}
+            </h2>
+
+            <p>
+              Meine bisherigen Erfahrungen mit
+              {{ selectedSkill.name }}.
+            </p>
+          </div>
+        </header>
+
+        <div class="skill-experience-section">
+          <h3>Was ich damit gemacht habe</h3>
+
+          <ul class="skill-description-list">
+            @for (
+              description of selectedSkill.description;
+              track description
+              ) {
+              <li>{{ description }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="skill-projects-section">
+          <div class="skill-projects-heading">
+            <div>
+              <p class="skill-modal-eyebrow">
+                Passende Arbeiten
+              </p>
+
+              <h3>
+                Projekte mit {{ selectedSkill.name }}
+              </h3>
+            </div>
+
+            <span class="project-count">
+              {{ filteredSkillProjects.length }}
+
+              {{
+                filteredSkillProjects.length === 1
+                  ? 'Projekt'
+                  : 'Projekte'
+              }}
+            </span>
+          </div>
+
+          @if (filteredSkillProjects.length > 0) {
+            <div class="skill-projects-grid">
+              @for (
+                project of filteredSkillProjects;
+                track project.id
+                ) {
+                <app-project-card
+                  [project]="project"
+                ></app-project-card>
+              }
+            </div>
+          } @else {
+            <div class="no-skill-projects">
+              <h4>Noch kein passendes Projekt eingetragen</h4>
+
+              <p>
+                Für diese Technologie ist aktuell noch kein Projekt
+                eingetragen.
+              </p>
+            </div>
+          }
+        </div>
+      </section>
+    </div>
+  }
 </main>
