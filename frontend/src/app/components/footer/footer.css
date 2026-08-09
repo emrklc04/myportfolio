@@ -21,7 +21,9 @@
 
 .footer-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 18px;
+  justify-content: center;
 }
 
 .footer-links a {

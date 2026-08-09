@@ -1,5 +1,6 @@
 package at.emre.portfolio.controller;
 
+import at.emre.portfolio.config.JwtService;
 import at.emre.portfolio.dto.LoginRequest;
 import at.emre.portfolio.dto.LoginResponse;
 import jakarta.validation.Valid;
@@ -16,11 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     public AuthController(
-            AuthenticationManager authenticationManager
+            AuthenticationManager authenticationManager,
+            JwtService jwtService
     ) {
         this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
     }
 
     @PostMapping("/login")
@@ -35,9 +39,15 @@ public class AuthController {
                         )
                 );
 
-        return new LoginResponse(
+        String token = jwtService.generateToken(
                 authentication.getName(),
                 "ADMIN"
+        );
+
+        return new LoginResponse(
+                authentication.getName(),
+                "ADMIN",
+                token
         );
     }
 }

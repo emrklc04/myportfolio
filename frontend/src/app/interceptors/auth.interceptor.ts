@@ -3,8 +3,14 @@ import {
 } from '@angular/core';
 
 import {
+  HttpErrorResponse,
   HttpInterceptorFn,
 } from '@angular/common/http';
+
+import {
+  catchError,
+  throwError,
+} from 'rxjs';
 
 import {
   environment,
@@ -87,5 +93,21 @@ export const authInterceptor: HttpInterceptorFn =
         },
       });
 
-    return next(authenticatedRequest);
+    /*
+     * Läuft das Token während der Nutzung ab (oder wird es vom
+     * Backend aus einem anderen Grund abgelehnt), wird automatisch
+     * ausgeloggt statt einer stillen 401-Fehlermeldung.
+     */
+    return next(authenticatedRequest).pipe(
+      catchError((error: unknown) => {
+        if (
+          error instanceof HttpErrorResponse &&
+          error.status === 401
+        ) {
+          authService.logout();
+        }
+
+        return throwError(() => error);
+      }),
+    );
   };

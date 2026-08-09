@@ -14,6 +14,22 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'impressum',
+    title: 'Impressum | Emre Kilic',
+    loadComponent: () =>
+      import('./pages/impressum/impressum').then(
+        (component) => component.Impressum,
+      ),
+  },
+  {
+    path: 'datenschutz',
+    title: 'Datenschutz | Emre Kilic',
+    loadComponent: () =>
+      import('./pages/datenschutz/datenschutz').then(
+        (component) => component.Datenschutz,
+      ),
+  },
+  {
     path: 'admin',
     title: 'Admin Login | Emre Kilic',
     loadComponent: () =>
