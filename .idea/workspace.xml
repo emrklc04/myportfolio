@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ae4fe17-9e0e-4090-8cfa-ef69baa550da" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/claudeCodeEditorTabs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/claudeCodeEditorTabs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/SkillDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/SkillDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/SkillRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/SkillRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/entity/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/entity/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/service/SkillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/service/SkillService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/models/skill.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/models/skill.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/mrp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/mrp-screenshot-0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/tour-planner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/tour-planner-screenshot-0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +133,7 @@
       <workItem from="1785949626399" duration="610000" />
       <workItem from="1785995593200" duration="2816000" />
       <workItem from="1786170999153" duration="24000" />
-      <workItem from="1786262924198" duration="1005000" />
+      <workItem from="1786262924198" duration="3517000" />
     </task>
     <servers />
   </component>

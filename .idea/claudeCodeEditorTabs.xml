@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ClaudeCodeEditorTabs">
-    <option name="activeSessionId" value="9da92d22-d878-4084-a7a2-2bb166b044d5" />
+    <option name="activeSessionId" value="e9b02e01-c23c-4573-8f4f-b76dec9e582f" />
     <option name="openSessionIds">
       <list>
         <option value="df3e9586-5bc6-4453-8f85-22b3098f45b5" />
         <option value="23104e54-feaa-42da-a0e5-e21f1b4d7220" />
-        <option value="9da92d22-d878-4084-a7a2-2bb166b044d5" />
+        <option value="e9b02e01-c23c-4573-8f4f-b76dec9e582f" />
       </list>
     </option>
     <option name="sessionPaths">
       <map>
         <entry key="23104e54-feaa-42da-a0e5-e21f1b4d7220" value="/sessions/6bfd774d-1383-48e6-a9e6-a0a72cc90be6" />
-        <entry key="9da92d22-d878-4084-a7a2-2bb166b044d5" value="/sessions/fe7556b4-ab3e-4f8f-b326-647f40c2c77d" />
         <entry key="df3e9586-5bc6-4453-8f85-22b3098f45b5" value="/sessions/6a15eb69-84f6-44e8-9ad0-fb95ae516d9e" />
+        <entry key="e9b02e01-c23c-4573-8f4f-b76dec9e582f" value="/sessions/fe7556b4-ab3e-4f8f-b326-647f40c2c77d" />
       </map>
     </option>
     <option name="sessionTitles">
       <map>
         <entry key="23104e54-feaa-42da-a0e5-e21f1b4d7220" value="sorg dafür dass wenn ich bei über mich bin, dass i" />
-        <entry key="9da92d22-d878-4084-a7a2-2bb166b044d5" value="warum sagt er mir dass port 8080 belegt ist obwohl" />
         <entry key="df3e9586-5bc6-4453-8f85-22b3098f45b5" value="erstelle mir ein feld auf der über mich seite unte" />
+        <entry key="e9b02e01-c23c-4573-8f4f-b76dec9e582f" value="warum sagt er mir dass port 8080 belegt ist obwohl" />
       </map>
     </option>
   </component>

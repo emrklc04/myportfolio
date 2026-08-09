@@ -38,9 +38,11 @@
 }
 
 .project-image {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 45px;
+  object-fit: contain;
   transition: transform 0.35s;
 }
 
@@ -56,9 +58,11 @@
   padding: 7px 12px;
   border-radius: 999px;
   color: #07111f;
-  background: var(--accent-color);
+  background: #ffd166;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   font-size: 0.75rem;
   font-weight: 800;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -183,9 +187,11 @@
 }
 
 .modal-cover-image {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 70px;
+  object-fit: contain;
 }
 
 .modal-hero::after {
