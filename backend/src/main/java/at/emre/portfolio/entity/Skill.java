@@ -16,6 +16,9 @@ public class Skill {
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
+    @Column(name = "icon_url", length = 500)
+    private String iconUrl;
+
     @ElementCollection
     @CollectionTable(name = "skill_descriptions", joinColumns = @JoinColumn(name = "skill_id"))
     @Column(name = "description", nullable = false)
@@ -62,6 +65,14 @@ public class Skill {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
     public List<String> getDescription() {

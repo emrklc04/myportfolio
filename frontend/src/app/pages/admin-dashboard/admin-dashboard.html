@@ -221,6 +221,22 @@
             </label>
 
             <label class="form-field full-width">
+              <span>Logo (Bild-URL oder Pfad)</span>
+
+              <input
+                type="text"
+                name="skillIconUrl"
+                [(ngModel)]="skillForm.iconUrl"
+                placeholder="images/java-logo.jpg oder https://..."
+              />
+
+              <small>
+                Eigene jpg-Datei in frontend/public/images/ ablegen und Pfad eintragen (z. B. images/java-logo.jpg),
+                oder eine Bild-URL aus dem Internet einfügen. Leer lassen für automatisches Standard-Logo.
+              </small>
+            </label>
+
+            <label class="form-field full-width">
               <span>
                 Beschreibungspunkte
               </span>
@@ -258,9 +274,10 @@
           <div class="form-preview">
             <div class="preview-circle">
               <div>
-                <span>
-                  {{ skillForm.name || 'Skill' }}
-                </span>
+                <img
+                  [src]="skillIconPreviewUrl"
+                  [alt]="skillForm.name || 'Skill'"
+                />
               </div>
             </div>
 

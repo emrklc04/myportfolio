@@ -573,6 +573,12 @@
   font-weight: 700;
 }
 
+.preview-circle img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
 .form-preview > div:last-child > p {
   margin: 0 0 5px;
   color: #c9e4ca;

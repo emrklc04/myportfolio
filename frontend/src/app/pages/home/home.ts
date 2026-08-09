@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { finalize } from 'rxjs';
 import { ProjectCard } from '../../components/project-card/project-card';
+import { getSkillIconUrl } from '../../data/skill-icons';
 import { Project } from '../../models/project.model';
 import { Skill } from '../../models/skill.model';
 import { ProjectService } from '../../services/project.service';
@@ -340,5 +341,9 @@ export class Home implements OnInit {
     if (this.selectedSkill) {
       this.closeSkillDetails();
     }
+  }
+
+  protected skillIconUrl(skill: Skill): string {
+    return getSkillIconUrl(skill.name, skill.iconUrl);
   }
 }

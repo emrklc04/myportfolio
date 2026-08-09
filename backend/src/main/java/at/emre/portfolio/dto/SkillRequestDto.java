@@ -7,6 +7,7 @@ public record SkillRequestDto(
         @NotBlank(message = "Der Name darf nicht leer sein")
         String name,
 
+        String iconUrl,
         List<String> description,
         List<String> projectTechnologies
 ) {}

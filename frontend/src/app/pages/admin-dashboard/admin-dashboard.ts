@@ -27,6 +27,10 @@ import {
 } from '../../models/skill.model';
 
 import {
+  getSkillIconUrl,
+} from '../../data/skill-icons';
+
+import {
   AuthService,
 } from '../../services/auth.service';
 
@@ -40,6 +44,7 @@ import {
 
 interface SkillForm {
   name: string;
+  iconUrl: string;
   description: string;
   technologies: string;
 }
@@ -127,6 +132,7 @@ export class AdminDashboard implements OnInit {
     this.saving = true;
     const request: SkillRequest = {
       name: this.skillForm.name.trim(),
+      iconUrl: this.skillForm.iconUrl.trim() || undefined,
       description: this.splitValues(this.skillForm.description),
       projectTechnologies: this.splitValues(this.skillForm.technologies),
     };
@@ -170,6 +176,7 @@ export class AdminDashboard implements OnInit {
     this.editingSkillId = skill.id || null;
     this.skillForm = {
       name: skill.name || '',
+      iconUrl: skill.iconUrl || '',
       description: skill.description ? skill.description.join(', ') : '',
       technologies: skill.projectTechnologies
         ? skill.projectTechnologies.join(', ')
@@ -388,9 +395,14 @@ export class AdminDashboard implements OnInit {
   private createEmptySkillForm(): SkillForm {
     return {
       name: '',
+      iconUrl: '',
       description: '',
       technologies: '',
     };
+  }
+
+  protected get skillIconPreviewUrl(): string {
+    return getSkillIconUrl(this.skillForm.name || '', this.skillForm.iconUrl);
   }
 
   private createEmptyProjectForm(): ProjectForm {

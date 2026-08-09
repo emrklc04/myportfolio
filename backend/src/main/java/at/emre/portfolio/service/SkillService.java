@@ -42,6 +42,7 @@ public class SkillService {
 
         Skill skill = new Skill();
         skill.setName(request.name());
+        skill.setIconUrl(request.iconUrl());
         skill.setDescription(request.description() != null ? request.description() : List.of());
         skill.setProjectTechnologies(request.projectTechnologies() != null ? request.projectTechnologies() : List.of());
 
@@ -54,6 +55,7 @@ public class SkillService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Skill nicht gefunden"));
 
         skill.setName(request.name());
+        skill.setIconUrl(request.iconUrl());
         skill.setDescription(request.description() != null ? request.description() : List.of());
         skill.setProjectTechnologies(request.projectTechnologies() != null ? request.projectTechnologies() : List.of());
 
@@ -72,6 +74,7 @@ public class SkillService {
         return new SkillDto(
                 skill.getId(),
                 skill.getName(),
+                skill.getIconUrl(),
                 List.copyOf(skill.getDescription()),
                 List.copyOf(skill.getProjectTechnologies())
         );

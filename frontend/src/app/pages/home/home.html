@@ -399,11 +399,18 @@
                   class="skill-circle"
                 >
                   <span class="skill-circle-inner">
-                    <strong>{{ skill.name }}</strong>
+                    <img
+                      class="skill-icon"
+                      [src]="skillIconUrl(skill)"
+                      [alt]="skill.name"
+                      loading="lazy"
+                    />
                     <small>Details ansehen</small>
                   </span>
                 </span>
               </button>
+
+              <p class="skill-name">{{ skill.name }}</p>
             </article>
           }
         </div>
@@ -457,7 +464,11 @@
         <header class="skill-modal-header">
           <div class="modal-skill-circle">
             <div class="modal-skill-circle-inner">
-              <strong>{{ selectedSkill.name }}</strong>
+              <img
+                class="skill-icon"
+                [src]="skillIconUrl(selectedSkill)"
+                [alt]="selectedSkill.name"
+              />
             </div>
           </div>
 
