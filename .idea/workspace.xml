@@ -7,10 +7,6 @@
     <list default="true" id="9ae4fe17-9e0e-4090-8cfa-ef69baa550da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/claudeCodeEditorTabs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/claudeCodeEditorTabs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/mrp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/mrp-screenshot-0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/qr-generator.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/qr-generator-screenshot-0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/images/tour-planner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/tour-planner-screenshot-0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +36,10 @@
     &quot;accountId&quot;: &quot;150abf7b-5048-4ad6-94ae-d00c88105901&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -133,7 +133,7 @@
       <workItem from="1785949626399" duration="610000" />
       <workItem from="1785995593200" duration="2816000" />
       <workItem from="1786170999153" duration="24000" />
-      <workItem from="1786262924198" duration="3517000" />
+      <workItem from="1786262924198" duration="10128000" />
     </task>
     <servers />
   </component>
