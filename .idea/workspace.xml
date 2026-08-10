@@ -6,22 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9ae4fe17-9e0e-4090-8cfa-ef69baa550da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/emre/portfolio/dto/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/data/projects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/data/projects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/interceptors/auth.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/interceptors/auth.interceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/project-card/project-card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/admin-dashboard/admin-dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,6 +139,7 @@
       <workItem from="1785995593200" duration="2816000" />
       <workItem from="1786170999153" duration="24000" />
       <workItem from="1786262924198" duration="13025000" />
+      <workItem from="1786305314173" duration="3976000" />
     </task>
     <servers />
   </component>

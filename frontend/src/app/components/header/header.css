@@ -97,8 +97,8 @@
     width: min(100% - 24px, 1180px);
   }
 
-  .logo span:last-child {
-    display: none;
+  .logo {
+    font-size: 1rem;
   }
 
   .navigation {

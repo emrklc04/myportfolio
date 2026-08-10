@@ -1100,6 +1100,11 @@
     grid-template-columns: repeat(2, minmax(190px, 1fr));
   }
 
+  .skill-circle {
+    width: 190px;
+    height: 190px;
+  }
+
   .skill-description-list {
     grid-template-columns: 1fr;
   }

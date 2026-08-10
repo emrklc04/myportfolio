@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ClaudeCodeEditorTabs">
-    <option name="activeSessionId" value="f173677e-99bd-4ddb-8624-b6fb7e7877ad" />
+    <option name="activeSessionId" value="a0e5a69d-5397-402c-ad37-9a7590fd1da9" />
     <option name="openSessionIds">
       <list>
         <option value="df3e9586-5bc6-4453-8f85-22b3098f45b5" />
-        <option value="23104e54-feaa-42da-a0e5-e21f1b4d7220" />
-        <option value="f173677e-99bd-4ddb-8624-b6fb7e7877ad" />
+        <option value="a0e5a69d-5397-402c-ad37-9a7590fd1da9" />
       </list>
     </option>
     <option name="sessionPaths">
       <map>
-        <entry key="23104e54-feaa-42da-a0e5-e21f1b4d7220" value="/sessions/6bfd774d-1383-48e6-a9e6-a0a72cc90be6" />
+        <entry key="a0e5a69d-5397-402c-ad37-9a7590fd1da9" value="/sessions/new" />
         <entry key="df3e9586-5bc6-4453-8f85-22b3098f45b5" value="/sessions/6a15eb69-84f6-44e8-9ad0-fb95ae516d9e" />
-        <entry key="f173677e-99bd-4ddb-8624-b6fb7e7877ad" value="/sessions/1aa5a8f7-fe49-4507-9edb-1b8120d86d54" />
       </map>
     </option>
     <option name="sessionTitles">
       <map>
-        <entry key="23104e54-feaa-42da-a0e5-e21f1b4d7220" value="sorg dafür dass wenn ich bei über mich bin, dass i" />
+        <entry key="a0e5a69d-5397-402c-ad37-9a7590fd1da9" value="Claude Code" />
         <entry key="df3e9586-5bc6-4453-8f85-22b3098f45b5" value="erstelle mir ein feld auf der über mich seite unte" />
-        <entry key="f173677e-99bd-4ddb-8624-b6fb7e7877ad" value="ich möchte dass du statt meiner pgadmin db neon ve" />
       </map>
     </option>
   </component>
