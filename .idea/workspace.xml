@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ae4fe17-9e0e-4090-8cfa-ef69baa550da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/public/images/ci-cd-screenshot-0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/images/ci-cd-screenshot-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/images/ci-cd-screenshot-2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/paipline-screenshot-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/paipline-screenshot-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/paipline-screenshot-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/paipline.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/images/zp-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/images/zp-logo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +143,7 @@
       <workItem from="1786262924198" duration="13025000" />
       <workItem from="1786305314173" duration="8977000" />
       <workItem from="1786461424120" duration="2575000" />
-      <workItem from="1786469777258" duration="3429000" />
+      <workItem from="1786469777258" duration="5884000" />
     </task>
     <servers />
   </component>
