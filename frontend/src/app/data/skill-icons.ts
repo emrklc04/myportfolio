@@ -25,6 +25,8 @@ const DEFAULT_SKILL_ICONS: Record<string, string> = {
   c: `${DEVICON_BASE}/c/c-original.svg`,
   'c++': `${DEVICON_BASE}/cplusplus/cplusplus-original.svg`,
   'c#': `${DEVICON_BASE}/csharp/csharp-original.svg`,
+  azure: `${DEVICON_BASE}/azure/azure-original.svg`,
+  'microsoft azure': `${DEVICON_BASE}/azure/azure-original.svg`,
 };
 
 const FALLBACK_ICON = `${DEVICON_BASE}/devicon/devicon-original.svg`;
