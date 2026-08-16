@@ -1,10 +1,11 @@
 // Wird nur für Produktions-Builds (ng build --configuration production)
 // verwendet (siehe angular.json -> fileReplacements).
 //
-// TODO vor dem echten Go-Live: apiUrl auf die tatsächliche Backend-Domain
-// setzen (z. B. 'https://api.emrekilic.dev/api') und in
+// Backend läuft auf Azure App Service. Falls die Web App neu erstellt wird,
+// ändert sich der zufällige Hostname-Suffix -- dann hier aktualisieren und in
 // backend/src/main/java/.../config/CorsConfig.java die passende
 // Frontend-Domain über die Umgebungsvariable CORS_ALLOWED_ORIGINS erlauben.
 export const environment = {
-  apiUrl: 'http://localhost:8080/api',
+  apiUrl:
+    'https://emre-portfolio-backend-decpfahteubhgraz.canadacentral-01.azurewebsites.net/api',
 };

@@ -1,0 +1,10 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/images/*",
+      "/downloads/*",
+      "/*.{css,js,ico,png,jpg,jpeg,svg,webp,gif,woff,woff2,ttf,map}"
+    ]
+  }
+}
