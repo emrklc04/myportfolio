@@ -19,6 +19,15 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Frontend bauen
+        working-directory: ./frontend
+        run: |
+          npm ci
+          npm run build -- --configuration production
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -31,6 +40,7 @@ jobs:
           app_location: "./frontend" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "dist/myportfolio/browser" # Built app content directory - optional
+          skip_app_build: true # Wir bauen selbst mit aktuellem Node, Oryx hat kein passendes Node fuer Angular 22
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
