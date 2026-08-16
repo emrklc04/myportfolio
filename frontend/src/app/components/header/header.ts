@@ -19,6 +19,7 @@ type NavSection = 'projects' | 'about';
 export class Header implements OnInit, OnDestroy {
   protected isHomeRoute = true;
   protected activeSection: NavSection = 'projects';
+  protected isMenuOpen = false;
 
   private readonly routerSubscription: Subscription;
 
@@ -28,7 +29,16 @@ export class Header implements OnInit, OnDestroy {
       .subscribe(() => {
         this.updateHomeRouteFlag();
         this.updateActiveSection();
+        this.closeMenu();
       });
+  }
+
+  protected toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  protected closeMenu(): void {
+    this.isMenuOpen = false;
   }
 
   ngOnInit(): void {

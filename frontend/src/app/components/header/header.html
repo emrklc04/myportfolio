@@ -4,11 +4,30 @@
       <span>Emre Kilic</span>
     </a>
 
-    <nav class="navigation">
+    <button
+      type="button"
+      class="menu-toggle"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-controls="primary-navigation"
+      aria-label="Menü öffnen/schließen"
+      (click)="toggleMenu()"
+    >
+      <span class="menu-icon" [class.open]="isMenuOpen" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="navigation"
+      [class.open]="isMenuOpen"
+    >
       <a
         routerLink="/"
         [class.active]="isProjectsActive"
-        (click)="goToProjects($event)"
+        (click)="goToProjects($event); closeMenu()"
       >
         My Projects
       </a>
@@ -16,6 +35,7 @@
       <a
         href="#about"
         [class.active]="isAboutActive"
+        (click)="closeMenu()"
       >
         Über mich
       </a>
@@ -24,6 +44,7 @@
         routerLink="/admin"
         routerLinkActive="active"
         class="admin-link"
+        (click)="closeMenu()"
       >
         <span class="admin-icon" aria-hidden="true">
           ⚙
