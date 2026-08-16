@@ -37,9 +37,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "./frontend" # App source code path
+          app_location: "./frontend/dist/myportfolio/browser" # Bereits gebauter Output (wir bauen selbst, siehe Schritt oben)
           api_location: "" # Api source code path - optional
-          output_location: "dist/myportfolio/browser" # Built app content directory - optional
+          output_location: "" # nicht noetig, app_location zeigt schon auf den fertigen Output
           skip_app_build: true # Wir bauen selbst mit aktuellem Node, Oryx hat kein passendes Node fuer Angular 22
           ###### End of Repository/Build Configurations ######
 
