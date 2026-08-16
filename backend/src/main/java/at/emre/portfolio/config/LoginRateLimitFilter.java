@@ -38,7 +38,7 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
                 "POST".equalsIgnoreCase(request.getMethod()) &&
                         LOGIN_PATH.equals(request.getRequestURI());
 
-        if (!isLoginRequest || !isRateLimited(request.getRemoteAddr())) {
+        if (!isLoginRequest || !isRateLimited(resolveClientIp(request))) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -48,6 +48,19 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
         response.getWriter().write(
                 "{\"error\":\"Zu viele Login-Versuche. Bitte in ein paar Minuten erneut versuchen.\"}"
         );
+    }
+
+    /**
+     * Azure App Service steht als Reverse-Proxy davor, daher liefert
+     * request.getRemoteAddr() nur die interne Proxy-Adresse. Die echte
+     * Client-IP steht im X-Forwarded-For-Header (erster Eintrag der Kette).
+     */
+    private String resolveClientIp(HttpServletRequest request) {
+        String forwardedFor = request.getHeader("X-Forwarded-For");
+        if (forwardedFor != null && !forwardedFor.isBlank()) {
+            return forwardedFor.split(",")[0].trim();
+        }
+        return request.getRemoteAddr();
     }
 
     private boolean isRateLimited(String clientIp) {
