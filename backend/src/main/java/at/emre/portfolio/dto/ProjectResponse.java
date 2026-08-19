@@ -14,6 +14,7 @@ public record ProjectResponse(
         String githubUrl,
         String liveUrl,
         String downloadUrl,
+        String videoUrl,
         boolean featured,
         List<String> technologies,
         LocalDateTime createdAt,

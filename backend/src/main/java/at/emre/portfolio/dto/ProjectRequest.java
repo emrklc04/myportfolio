@@ -29,6 +29,9 @@ public record ProjectRequest(
         @Size(max = 500)
         String downloadUrl,
 
+        @Size(max = 500)
+        String videoUrl,
+
         boolean featured,
 
         List<String> technologies

@@ -168,6 +168,12 @@ public class ProjectService {
                 )
         );
 
+        project.setVideoUrl(
+                normalizeNullable(
+                        request.videoUrl()
+                )
+        );
+
         project.setFeatured(
                 request.featured()
         );
@@ -273,6 +279,7 @@ public class ProjectService {
                 project.getGithubUrl(),
                 project.getLiveUrl(),
                 project.getDownloadUrl(),
+                project.getVideoUrl(),
                 project.isFeatured(),
                 copyList(project.getTechnologies()),
                 project.getCreatedAt(),

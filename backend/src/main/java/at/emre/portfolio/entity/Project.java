@@ -58,6 +58,9 @@ public class Project {
     @Column(name = "download_url", length = 500)
     private String downloadUrl;
 
+    @Column(name = "video_url", length = 500)
+    private String videoUrl;
+
     @Column(nullable = false)
     private boolean featured;
 
@@ -179,6 +182,14 @@ public class Project {
 
     public void setDownloadUrl(String downloadUrl) {
         this.downloadUrl = downloadUrl;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
     public boolean isFeatured() {
