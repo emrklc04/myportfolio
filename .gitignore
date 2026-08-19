@@ -3,3 +3,4 @@
 !.env.example
 
 .idea/
+azure-publish-profile.xml
