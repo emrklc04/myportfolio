@@ -90,6 +90,25 @@
           }
         </div>
 
+        @if (project.videoUrl) {
+          <section class="video-section">
+            <div class="screenshots-heading">
+              <p class="modal-eyebrow">Präsentation</p>
+              <h3>Video</h3>
+            </div>
+
+            <video
+              class="project-video"
+              [src]="project.videoUrl"
+              autoplay
+              muted
+              loop
+              playsinline
+              controls
+            ></video>
+          </section>
+        }
+
         @if ((project.screenshots?.length ?? 0) > 0) {
           <section class="screenshots-section">
             <div class="screenshots-heading">

@@ -55,6 +55,7 @@ interface ProjectForm {
   description: string;
   screenshots: string;
   downloadUrl: string;
+  videoUrl: string;
   shortDescription: string;
   fullDescription: string;
   technologies: string;
@@ -288,6 +289,7 @@ export class AdminDashboard implements OnInit {
       fullDescription: project.fullDescription || '',
       screenshots: project.screenshots ? project.screenshots.join(', ') : '',
       downloadUrl: project.downloadUrl || '',
+      videoUrl: project.videoUrl || '',
       technologies: project.technologies ? project.technologies.join(', ') : '',
       githubUrl: project.githubUrl || '',
       liveUrl: project.liveUrl || '',
@@ -369,6 +371,7 @@ export class AdminDashboard implements OnInit {
       githubUrl: this.projectForm.githubUrl.trim() || null,
       liveUrl: this.projectForm.liveUrl.trim() || null,
       downloadUrl: this.projectForm.downloadUrl.trim() || null,
+      videoUrl: this.projectForm.videoUrl.trim() || null,
       featured: this.projectForm.featured,
       technologies: this.splitValues(this.projectForm.technologies),
     };
@@ -412,6 +415,7 @@ export class AdminDashboard implements OnInit {
       description: '',
       screenshots: '',
       downloadUrl: '',
+      videoUrl: '',
       shortDescription: '',
       fullDescription: '',
       technologies: '',

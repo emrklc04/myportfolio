@@ -10,6 +10,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   downloadUrl?: string;
+  videoUrl?: string;
   featured?: boolean;
   slug?: string;
   createdAt?: string;
@@ -26,6 +27,7 @@ export interface ProjectRequest {
   githubUrl?: string | null;
   liveUrl?: string | null;
   downloadUrl?: string | null;
+  videoUrl?: string | null;
   featured: boolean;
 }
 
@@ -40,6 +42,7 @@ export interface ProjectResponse {
   githubUrl: string | null;
   liveUrl: string | null;
   downloadUrl: string | null;
+  videoUrl: string | null;
   featured: boolean;
   technologies: string[] | null;
   createdAt: string;

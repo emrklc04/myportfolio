@@ -115,6 +115,8 @@ export class ProjectService {
         project.liveUrl || undefined,
       downloadUrl:
         project.downloadUrl || undefined,
+      videoUrl:
+        project.videoUrl || undefined,
       featured: project.featured,
       createdAt: project.createdAt,
       updatedAt: project.updatedAt,
