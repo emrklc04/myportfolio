@@ -16,7 +16,7 @@ interface TimelineEntry {
   id: string;
   title: string;
   organization: string;
-  location: string;
+  location?: string;
   period: string;
   description: string[];
 }
@@ -36,6 +36,7 @@ export class Home implements OnInit {
 
   protected searchTerm = '';
   protected selectedTechnology = 'All';
+  protected isTechFilterExpanded = false;
 
   protected skills: Skill[] = [];
   protected loadingSkills = true;
@@ -45,7 +46,6 @@ export class Home implements OnInit {
       id: 'waiter',
       title: 'Kellner',
       organization: 'ProStaff',
-      location: 'Wien',
       period: '04/2022 – 10/2022',
       description: [
         'Bestellungen aufnehmen und Speisen sowie Getränke servieren.',
@@ -57,7 +57,6 @@ export class Home implements OnInit {
       id: 'internship',
       title: 'Ferialpraktikant',
       organization: 'MA 31',
-      location: 'Wien',
       period: '07/2022 – 08/2022',
       description: [
         'Schnelles und genaues Erledigen der übertragenen Aufgaben.',
@@ -69,7 +68,6 @@ export class Home implements OnInit {
       id: 'sales-advisor',
       title: 'Verkaufsberater',
       organization: 'MediaMarkt',
-      location: 'Wien Stadlau',
       period: '10/2022 – 07/2024',
       description: [
         'Erstellen von Rechnungen sowie Bearbeiten von Rückgaben und Umtausch.',
@@ -81,7 +79,6 @@ export class Home implements OnInit {
       id: 'civil-service',
       title: 'Zivildienst',
       organization: 'Lebenshilfe',
-      location: 'Niederösterreich',
       period: '01/2024 – 09/2024',
       description: [
         'Betreuung und Unterstützung von Menschen mit Behinderung.',
@@ -93,7 +90,6 @@ export class Home implements OnInit {
       id: 'sales-employee',
       title: 'Verkaufsmitarbeiter',
       organization: 'Hofer KG',
-      location: 'Gänserndorf',
       period: '05/2025 – 04/2026',
       description: [
         'Einsatz an der Kassa sowie Mitarbeit im Warenmanagement.',
@@ -200,6 +196,10 @@ export class Home implements OnInit {
   protected selectTechnology(technology: string): void {
     this.selectedTechnology = technology;
     this.applyFilters();
+  }
+
+  protected toggleTechFilter(): void {
+    this.isTechFilterExpanded = !this.isTechFilterExpanded;
   }
 
   protected resetFilters(): void {

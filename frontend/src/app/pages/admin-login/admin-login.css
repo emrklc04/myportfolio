@@ -159,29 +159,6 @@
   font-size: 1.8rem;
 }
 
-.development-notice {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  margin-top: 28px;
-  padding: 15px;
-  border: 1px solid rgba(201, 228, 202, 0.2);
-  border-radius: 13px;
-  color: #c9e4ca;
-  background: rgba(201, 228, 202, 0.06);
-}
-
-.development-notice span {
-  flex: 0 0 auto;
-  font-weight: 800;
-}
-
-.development-notice p {
-  margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.55;
-}
-
 .login-form {
   display: grid;
   gap: 22px;
@@ -284,14 +261,6 @@
   transform: translateY(-2px);
   background: #e1f1e2;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
-}
-
-.login-footer-text {
-  margin: 24px 0 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.78rem;
-  line-height: 1.5;
-  text-align: center;
 }
 
 @media (max-width: 900px) {

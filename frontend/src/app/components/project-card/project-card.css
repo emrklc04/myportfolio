@@ -199,6 +199,8 @@
   transition:
     transform 0.2s,
     background 0.2s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .close-button:hover,

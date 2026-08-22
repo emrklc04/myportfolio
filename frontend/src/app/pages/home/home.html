@@ -53,9 +53,30 @@
         </label>
 
         <div class="filter-area">
-          <p class="filter-label">Technologie filtern</p>
+          <button
+            type="button"
+            class="filter-label"
+            [attr.aria-expanded]="isTechFilterExpanded"
+            aria-controls="tech-filter-buttons"
+            (click)="toggleTechFilter()"
+          >
+            Technologie filtern
 
-          <div class="filter-buttons" aria-label="Technologie-Filter">
+            <span
+              class="filter-label-arrow"
+              [class.expanded]="isTechFilterExpanded"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+          </button>
+
+          <div
+            id="tech-filter-buttons"
+            class="filter-buttons"
+            [class.expanded]="isTechFilterExpanded"
+            aria-label="Technologie-Filter"
+          >
             <button
               type="button"
               class="filter-button"
@@ -145,20 +166,12 @@
 
   <section id="about" class="about-section">
     <div class="container about-grid">
-      <div class="profile-image-wrapper">
-        <img
-          src="images/profile.jpg"
-          alt="Profilbild von Emre Kilic"
-          class="profile-image"
-        />
-      </div>
-
       <div class="about-content">
         <p class="eyebrow">Über mich</p>
 
         <h1>
           Informatikstudent mit Interesse an moderner
-          Softwareentwicklung.
+          Softwareentwicklung
         </h1>
 
         <p>
@@ -170,9 +183,9 @@
 
         <p>
           Während meines Studiums habe ich Projekte mit Angular, Java,
-          Spring Boot, Python und PostgreSQL umgesetzt. Dabei konnte ich
-          Erfahrungen in der Planung, Implementierung und Präsentation
-          von Softwareprojekten sammeln.
+          Spring Boot, Python, PostgreSQL und Microsoft Azure umgesetzt.
+          Dabei konnte ich Erfahrungen in der Planung, Implementierung
+          und Präsentation von Softwareprojekten sammeln.
         </p>
 
         <div class="information-grid">
@@ -254,8 +267,7 @@
                     <strong>{{ entry.title }}</strong>
 
                     <span>
-                      {{ entry.organization }} ·
-                      {{ entry.location }}
+                      {{ entry.organization }}
                     </span>
                   </span>
 
