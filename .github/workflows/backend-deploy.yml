@@ -8,8 +8,13 @@ on:
       - '.github/workflows/backend-deploy.yml'
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   AZURE_WEBAPP_NAME: emre-portfolio-backend
+  AZURE_RESOURCE_GROUP: emre-portfolio-backend
 
 jobs:
   build-and-deploy:
@@ -30,9 +35,22 @@ jobs:
           chmod +x mvnw
           ./mvnw -B clean package -DskipTests
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: backend/target/*.jar
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy to Azure Web App
+        run: |
+          JAR_FILE=$(ls backend/target/*.jar | head -n 1)
+          az webapp deploy \
+            --resource-group "${{ env.AZURE_RESOURCE_GROUP }}" \
+            --name "${{ env.AZURE_WEBAPP_NAME }}" \
+            --src-path "$JAR_FILE" \
+            --type jar
+
+      - name: Azure logout
+        if: always()
+        run: az logout
