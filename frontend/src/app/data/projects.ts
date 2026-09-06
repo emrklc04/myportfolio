@@ -20,6 +20,7 @@ export const PROJECTS: Project[] = [
       'Java',
       'Spring Boot',
       'PostgreSQL',
+      'Power BI',
     ],
     githubUrl: 'https://github.com/emrklc04/tour-planner',
     downloadUrl: 'downloads/tour-planner.zip',

@@ -27,6 +27,8 @@ const DEFAULT_SKILL_ICONS: Record<string, string> = {
   'c#': `${DEVICON_BASE}/csharp/csharp-original.svg`,
   azure: `${DEVICON_BASE}/azure/azure-original.svg`,
   'microsoft azure': `${DEVICON_BASE}/azure/azure-original.svg`,
+  'power bi': 'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg',
+  powerbi: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg',
 };
 
 const FALLBACK_ICON = `${DEVICON_BASE}/devicon/devicon-original.svg`;
